@@ -19,7 +19,8 @@ function puzzleInfos(ctrl: Controller, puzzle: Puzzle): VNode {
     h('p', [
       ...ctrl.trans.vdom('puzzleId', h('a', {
         attrs: { href: `/training/${puzzle.id}` }
-      }, '#' + puzzle.id))
+      }, '#' + puzzle.id)),
+      h('strong', ' V2 BETA')
     ]),
     h('p', ctrl.trans.vdom('ratingX', ctrl.vm.mode === 'play' ? h('span.hidden', ctrl.trans.noarg('hidden')) : h('strong', puzzle.rating))),
     h('p', ctrl.trans.vdom('playedXTimes', h('strong', numberFormat(puzzle.plays))))
@@ -106,6 +107,11 @@ export function config(ctrl: Controller): MaybeVNode {
           },
         }, ctrl.trans.noarg(diff))
       ))
+    ]) : null,
+    ctrl.difficulty ? h('div.puzzle__side__config__beta', [
+      h('strong', "Puzzles v2 are brand new!"),
+      "They don't have stable ratings yet, so you may find them too hard or too easy.", h('br'),
+      "Please bear with us, it should only last a few days!"
     ]) : null
   ]);
 }
