@@ -9,6 +9,7 @@
   <string name="yourTurn">Tú eigur leik</string>
   <string name="aiNameLevelAiLevel">%1$s stig %2$s</string>
   <string name="level">Stig</string>
+  <string name="strength">Styrki</string>
   <string name="toggleTheChat">Goym/Vís kjatt</string>
   <string name="toggleSound">Slá ljóð til/frá</string>
   <string name="chat">Kjatta</string>
@@ -382,7 +383,6 @@
   <string name="more">Meira</string>
   <string name="memberSince">Limur síðani</string>
   <string name="lastSeenActive">Virkin %s</string>
-  <string name="challengeToPlay">Bjóða av at telva</string>
   <string name="player">Telvari</string>
   <string name="list">Listi</string>
   <string name="graph">Strikumynd</string>
@@ -510,6 +510,7 @@
   <string name="clockInitialTime">Byrjanartíð á klokku</string>
   <string name="clockIncrement">Øking á klokku</string>
   <string name="privacy">Privatlív</string>
+  <string name="privacyPolicy">Verndarpolitikkur</string>
   <string name="letOtherPlayersFollowYou">Lat aðrar telvarar fylgja tær</string>
   <string name="letOtherPlayersChallengeYou">Lat aðrar telvarar bjóða tær av</string>
   <string name="letOtherPlayersInviteYouToStudy">Lat aðrar telvarar bjóða tær at rannsaka</string>
@@ -655,6 +656,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Um tú ikki sært teldupostin, kanna onnur støð, hann kann vera. Eitt nú í junk, spam, social ella øðrum faldarum.</string>
   <string name="weHaveSentYouAnEmailTo">Vit hava sent %s ein teldupost. Klikk á leinkið í teldupostinum at endurseta títt loyniorð.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Við at skráseta teg, samtykkir tú í at vera bundin av okkara %s.</string>
+  <string name="readAboutOur">Les um, hvør %s okkara er.</string>
   <string name="networkLagBetweenYouAndLichess">Netseinkan millum teg og Lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Tíð at viðgera ein leik í Lichess-ambætaranum</string>
   <string name="downloadAnnotated">Tak viðmerkingar niður</string>
@@ -733,7 +735,6 @@
   <string name="error.unknown">Feilur</string>
   <string name="custom">Tillagað</string>
   <string name="notifications">Fráboðanir</string>
-  <string name="challenges">Avbjóðingar</string>
   <string name="perfRatingX">Styrkital: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s sekund at flyta fyrsta leik</item>
@@ -780,12 +781,6 @@
   <string name="opening">Byrjanartalv</string>
   <string name="middlegame">Miðtalv</string>
   <string name="endgame">Endatalv</string>
-  <string name="registerToSendChallenges">Skráset teg vinaliga at senda avbjóðingar.</string>
-  <string name="youCannotChallengeX">Tú kanst ikki bjóða %s av.</string>
-  <string name="xDoesNotAcceptChallenges">%s tekur ikki av avbjóðingum.</string>
-  <string name="yourXRatingIsTooFarFromY">Títt %1$s styrkital er ov langt frá %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Fær ikki bjóðað av vegna fyribils %s styrkital.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s tekur bert við avbjóðingum frá vinum.</string>
   <string name="conditionalPremoves">Treytaðir undanleikir</string>
   <string name="addCurrentVariation">Skoyt núverandi brigdi upp í</string>
   <string name="playVariationToCreateConditionalPremoves">Telva eitt brigdi til tess at skapa treytaðar undanleikir</string>

@@ -1,6 +1,7 @@
 package views
 package html.puzzle
 
+import controllers.routes
 import play.api.i18n.Lang
 import play.api.libs.json.{ JsArray, JsObject, JsString, Json }
 
@@ -30,6 +31,28 @@ object bits {
       )
   }
 
+  def pageMenu(active: String, days: Int = 30)(implicit lang: Lang) =
+    st.nav(cls := "page-menu__menu subnav")(
+      a(href := routes.Puzzle.home())(
+        trans.puzzles()
+      ),
+      a(cls := active.active("themes"), href := routes.Puzzle.themes())(
+        trans.puzzle.puzzleThemes()
+      ),
+      a(cls := active.active("dashboard"), href := routes.Puzzle.dashboard(days, "dashboard"))(
+        trans.puzzle.puzzleDashboard()
+      ),
+      a(cls := active.active("improvementAreas"), href := routes.Puzzle.dashboard(days, "improvementAreas"))(
+        trans.puzzle.improvementAreas()
+      ),
+      a(cls := active.active("strengths"), href := routes.Puzzle.dashboard(days, "strengths"))(
+        trans.puzzle.strengths()
+      ),
+      a(cls := active.active("history"), href := routes.Puzzle.history(1))(
+        trans.puzzle.history()
+      )
+    )
+
   private val i18nKeys: List[MessageKey] = {
     List(
       trans.puzzle.yourPuzzleRatingX,
@@ -46,10 +69,6 @@ object bits {
       trans.puzzle.hidden,
       trans.puzzle.jumpToNextPuzzleImmediately,
       trans.puzzle.fromGameLink,
-      trans.boardEditor,
-      trans.continueFromHere,
-      trans.playWithTheMachine,
-      trans.playWithAFriend,
       trans.puzzle.didYouLikeThisPuzzle,
       trans.puzzle.voteToLoadNextOne,
       trans.puzzle.puzzleId,
@@ -62,8 +81,7 @@ object bits {
       trans.puzzle.addAnotherTheme,
       trans.signUp,
       trans.analysis,
-      trans.rated,
-      trans.casual,
+      trans.playWithTheMachine,
       // ceval
       trans.depthX,
       trans.usingServerAnalysis,

@@ -17,7 +17,7 @@ final class JsonView(
 
   import JsonView._
 
-  def apply(puzzle: Puzzle, theme: PuzzleTheme, user: Option[User])(implicit
+  def apply(puzzle: Puzzle, theme: PuzzleTheme, replay: Option[PuzzleReplay], user: Option[User])(implicit
       lang: Lang
   ): Fu[JsObject] = {
     gameJson(
@@ -31,13 +31,17 @@ final class JsonView(
           "puzzle" -> puzzleJson(puzzle),
           "theme" -> Json
             .obj(
-              "key"  -> theme.key,
-              "name" -> theme.name.txt(),
+              "key" -> theme.key,
+              "name" -> {
+                if (theme == PuzzleTheme.mix) lila.i18n.I18nKeys.puzzle.puzzleThemes.txt()
+                else theme.name.txt()
+              },
               "desc" -> theme.description.txt()
             )
             .add("chapter" -> PuzzleTheme.studyChapterIds.get(theme.key))
         )
         .add("user" -> user.map(userJson))
+        .add("replay" -> replay.map(replayJson))
     }
   }
 
@@ -49,6 +53,9 @@ final class JsonView(
       .add(
         "provisional" -> u.perfs.puzzle.provisional
       )
+
+  private def replayJson(r: PuzzleReplay) =
+    Json.obj("days" -> r.days, "i" -> r.i, "of" -> r.nb)
 
   def roundJson(u: User, round: PuzzleRound, perf: Perf) =
     Json
@@ -65,16 +72,34 @@ final class JsonView(
 
   def pref(p: lila.pref.Pref) =
     Json.obj(
-      "blindfold"    -> p.blindfold,
-      "coords"       -> p.coords,
-      "rookCastle"   -> p.rookCastle,
-      "animation"    -> Json.obj("duration" -> p.animationMillis),
-      "destination"  -> p.destination,
-      "resizeHandle" -> p.resizeHandle,
-      "moveEvent"    -> p.moveEvent,
-      "highlight"    -> p.highlight,
-      "is3d"         -> p.is3d
+      "blindfold"   -> p.blindfold,
+      "coords"      -> p.coords,
+      "rookCastle"  -> p.rookCastle,
+      "animation"   -> Json.obj("duration" -> p.animationMillis),
+      "destination" -> p.destination,
+      "moveEvent"   -> p.moveEvent,
+      "highlight"   -> p.highlight,
+      "is3d"        -> p.is3d
     )
+
+  def dashboardJson(dash: PuzzleDashboard, days: Int)(implicit lang: Lang) = Json.obj(
+    "days"   -> days,
+    "global" -> dashboardResults(dash.global),
+    "themes" -> JsObject(dash.byTheme.toList.sortBy(-_._2.nb).map { case (key, res) =>
+      key.value -> Json.obj(
+        "theme"   -> PuzzleTheme(key).name.txt(),
+        "results" -> dashboardResults(res)
+      )
+    })
+  )
+
+  private def dashboardResults(res: PuzzleDashboard.Results) = Json.obj(
+    "nb"              -> res.nb,
+    "firstWins"       -> res.wins,
+    "replayWins"      -> res.fixed,
+    "puzzleRatingAvg" -> res.puzzleRatingAvg,
+    "performance"     -> res.performance
+  )
 
   private def puzzleJson(puzzle: Puzzle): JsObject = Json.obj(
     "id"         -> puzzle.id,

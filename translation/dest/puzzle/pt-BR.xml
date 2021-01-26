@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="puzzles">Quebra-cabeças</string>
+  <string name="puzzleThemes">Temas de quebra-cabeça</string>
   <string name="recommended">Recomendado</string>
   <string name="phases">Fases</string>
   <string name="motifs">Motivos táticos</string>
@@ -8,6 +9,7 @@
   <string name="lengths">Distância</string>
   <string name="mates">Xeque-mates</string>
   <string name="goals">Objetivos</string>
+  <string name="origin" comment="origin&#10;&#10;In this case origin stands for the game the puzzle was found in.">Origem</string>
   <string name="specialMoves">Movimentos especiais</string>
   <string name="didYouLikeThisPuzzle">Você gostou deste quebra-cabeças?</string>
   <string name="voteToLoadNextOne">Vote para carregar o próximo!</string>
@@ -41,5 +43,11 @@
   <string name="hardest">Muito difícil</string>
   <string name="example">Exemplo</string>
   <string name="addAnotherTheme">Adicionar um outro tema</string>
-  <string name="jumpToNextPuzzleImmediately">Ir para o próximo puzzle imediatamente</string>
+  <string name="jumpToNextPuzzleImmediately">Ir para o próximo problema automaticamente</string>
+  <string name="puzzleDashboard">Painel do quebra-cabeça</string>
+  <string name="improvementAreas">Áreas de aprimoramento</string>
+  <string name="strengths">Pontos fortes</string>
+  <string name="history">Histórico de quebra-cabeças</string>
+  <string name="solved">resolvido</string>
+  <string name="failed">falhou</string>
 </resources>

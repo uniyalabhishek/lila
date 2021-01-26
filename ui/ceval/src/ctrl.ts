@@ -1,7 +1,7 @@
 import { CevalCtrl, CevalOpts, CevalTechnology, Work, Step, Hovering, Started } from './types';
 
 import { Pool, officialStockfish } from './pool';
-import { defined, prop } from 'common';
+import { prop } from 'common';
 import { storedProp } from 'common/storage';
 import throttle from 'common/throttle';
 import { povChances } from './winningChances';
@@ -66,7 +66,6 @@ export default function(opts: CevalOpts): CevalCtrl {
     const sharedMem = sharedWasmMemory(8, 16);
     if (sharedMem) {
       technology = 'wasmx';
-      if (!defined(window['crossOriginIsolated'])) window['crossOriginIsolated'] = true; // polyfill
       try {
         sharedMem.grow(8);
         growableSharedMem = true;
@@ -75,7 +74,7 @@ export default function(opts: CevalOpts): CevalCtrl {
   }
 
   const initialAllocationMaxThreads = officialStockfish(opts.variant.key) ? 2 : 1;
-  const maxThreads = Math.min(Math.max((navigator.hardwareConcurrency || 1) - 1, 1), growableSharedMem ? 16 : initialAllocationMaxThreads);
+  const maxThreads = Math.min(Math.max((navigator.hardwareConcurrency || 1) - 1, 1), growableSharedMem ? 32 : initialAllocationMaxThreads);
   const threads = storedProp(storageKey('ceval.threads'), Math.min(Math.ceil((navigator.hardwareConcurrency || 1) / 4), maxThreads));
 
   const maxHashSize = Math.min((navigator.deviceMemory || 0.25) * 1024 / 8, growableSharedMem ? 1024 : 16);

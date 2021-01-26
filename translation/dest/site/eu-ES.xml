@@ -9,6 +9,7 @@
   <string name="yourTurn">Zure txanda</string>
   <string name="aiNameLevelAiLevel">%1$s, %2$s. maila</string>
   <string name="level">Maila</string>
+  <string name="strength">Indarra</string>
   <string name="toggleTheChat">Txata agertu</string>
   <string name="toggleSound">Soinua</string>
   <string name="chat">Txata</string>
@@ -382,7 +383,6 @@
   <string name="more">Gehiago</string>
   <string name="memberSince">Noiztik kidea:</string>
   <string name="lastSeenActive">Azken aldiz online: %s</string>
-  <string name="challengeToPlay">Partida baterako erronka egin</string>
   <string name="player">Jokalaria</string>
   <string name="list">Zerrenda</string>
   <string name="graph">Grafikoa</string>
@@ -510,6 +510,7 @@
   <string name="clockInitialTime">Erlojuaren hasierako denbora</string>
   <string name="clockIncrement">Denbora gehigarria</string>
   <string name="privacy">Pribatutasuna</string>
+  <string name="privacyPolicy">Pribatutasun politika</string>
   <string name="letOtherPlayersFollowYou">Beste jokalari batzuk zu jarraitzea baimendu</string>
   <string name="letOtherPlayersChallengeYou">Beste jokalari batzuk erronka egin dezatela baimentzea</string>
   <string name="letOtherPlayersInviteYouToStudy">Utzi beste jokalari batzuei zu ikerketetara gonbidatzen</string>
@@ -655,6 +656,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Ez baduzu mezua aurkitzen, begiratu beste tokietan: zaborrontzian, spam karpetan, ...</string>
   <string name="weHaveSentYouAnEmailTo">Mezu bat bidali dugu %s helbidera. Egizu klik mezuan zure pasahitza berrizteko.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Izena ematean, gure %s onartzen dituzu.</string>
+  <string name="readAboutOur">Irakurri gure %s.</string>
   <string name="networkLagBetweenYouAndLichess">Sarearen atzerapena Lichessen eta zure artean</string>
   <string name="timeToProcessAMoveOnLichessServer">Lichess zerbitzariak jokaldi bat egiteko denbora</string>
   <string name="downloadAnnotated">Oharrekin jaitsi</string>
@@ -733,7 +735,6 @@
   <string name="error.unknown">Errorea</string>
   <string name="custom">Pertsonalizatua</string>
   <string name="notifications">Jakinarazpenak</string>
-  <string name="challenges">Erronkak</string>
   <string name="perfRatingX">Sailkapena: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">Segundo %s lehenengo jokaldia egiteko</item>
@@ -780,12 +781,6 @@
   <string name="opening">Irekiera</string>
   <string name="middlegame">Erdi-jokoa</string>
   <string name="endgame">Finala</string>
-  <string name="registerToSendChallenges">Eman izena erronkak bidaltzeko.</string>
-  <string name="youCannotChallengeX">Ezin diozu %s erabiltzaileri erronka egin.</string>
-  <string name="xDoesNotAcceptChallenges">%s erabiltzaileak ez du erronkarik onartzen.</string>
-  <string name="yourXRatingIsTooFarFromY">Zure %1$s puntuazioa urrunegi dago %2$s-tik.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Ezin duzu erronkarik egin behin-behineko %s puntuazioa duzulako.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s erabiltzaileak bere lagunen erronkak onartzen ditu bakarrik.</string>
   <string name="conditionalPremoves">Baldintzadun aurrejokaldiak</string>
   <string name="addCurrentVariation">Uneko aldaera gehitu</string>
   <string name="playVariationToCreateConditionalPremoves">Aldaera bat jokatu baldintzadun aurre-jokaldiak sortzeko</string>

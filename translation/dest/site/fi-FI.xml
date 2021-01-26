@@ -9,6 +9,7 @@
   <string name="yourTurn">Sinun vuorosi</string>
   <string name="aiNameLevelAiLevel">%1$s taso %2$s</string>
   <string name="level">Taso</string>
+  <string name="strength">Vahvuus</string>
   <string name="toggleTheChat">Keskustelu päälle / pois</string>
   <string name="toggleSound">Ääni päälle / pois</string>
   <string name="chat">Keskustelu</string>
@@ -382,7 +383,6 @@
   <string name="more">Lisää</string>
   <string name="memberSince">Liittynyt</string>
   <string name="lastSeenActive">Nähty viimeksi %s</string>
-  <string name="challengeToPlay">Haasta peliin</string>
   <string name="player">Pelaaja</string>
   <string name="list">Lista</string>
   <string name="graph">Kaavio</string>
@@ -510,6 +510,7 @@
   <string name="clockInitialTime">Alkuaika</string>
   <string name="clockIncrement">Lisäaika</string>
   <string name="privacy">Yksityisyys</string>
+  <string name="privacyPolicy">tietosuojakäytännöstämme</string>
   <string name="letOtherPlayersFollowYou">Anna muiden pelaajien seurata sinua</string>
   <string name="letOtherPlayersChallengeYou">Anna muiden pelaajien haastaa sinut</string>
   <string name="letOtherPlayersInviteYouToStudy">Salli muiden pelaajien kutsua sinut tutkielmiin</string>
@@ -655,6 +656,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Jos et näe viestiä, tarkista muut paikat joihin se voi olla joutunut (kuten roskaposti- ja spämmikansiot).</string>
   <string name="weHaveSentYouAnEmailTo">Olemme lähettäneet sähköpostiviestin osoitteeseen %s. Klikkaa viestissä olevaa linkkiä nollataksesi salasanasi.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Rekistöitymällä hyväksyt lichessin %s ja sitoudut noudattamaan niitä.</string>
+  <string name="readAboutOur">Lue lisää %s.</string>
   <string name="networkLagBetweenYouAndLichess">Verkkoviive sinun ja lichessin välillä</string>
   <string name="timeToProcessAMoveOnLichessServer">Palvelimen siirtojen käsittelyyn vaatima aika</string>
   <string name="downloadAnnotated">Lataa kommenttien kanssa</string>
@@ -733,7 +735,6 @@
   <string name="error.unknown">Virhe</string>
   <string name="custom">Mukautettu</string>
   <string name="notifications">Ilmoitukset</string>
-  <string name="challenges">Haasteet</string>
   <string name="perfRatingX">Vahvuusluku: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s sekuntia aikaa pelata ensimmäinen siirto</item>
@@ -780,12 +781,6 @@
   <string name="opening">Avausvaihe</string>
   <string name="middlegame">Keskipeli</string>
   <string name="endgame">Loppupeli</string>
-  <string name="registerToSendChallenges">Rekisteröidy niin voit lähettää haasteita.</string>
-  <string name="youCannotChallengeX">Et voi haastaa pelaajaa %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s ei ota haasteita vastaan.</string>
-  <string name="yourXRatingIsTooFarFromY">%1$s-vahvuuslukusi on liian kaukana pelaajan %2$s vahvuusluvusta.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Et voi haastaa, koska %s-vahvuuslukusi on tilapäinen.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s ottaa vastaan haasteita vain kavereiltaan.</string>
   <string name="conditionalPremoves">Ehdolliset esisiirrot</string>
   <string name="addCurrentVariation">Lisää nykyinen muunnelma</string>
   <string name="playVariationToCreateConditionalPremoves">Luo ehdollisia esisiirtoja pelaamalla muunnelma</string>

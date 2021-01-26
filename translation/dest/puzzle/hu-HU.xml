@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="puzzles">Feladványok</string>
+  <string name="puzzleThemes">Feladvány témák</string>
   <string name="recommended">Ajánlott</string>
   <string name="phases">Szakaszok</string>
   <string name="motifs">Motívumok</string>
@@ -8,6 +9,7 @@
   <string name="lengths">Hossz</string>
   <string name="mates">Matt</string>
   <string name="goals">Célok</string>
+  <string name="origin" comment="origin&#10;&#10;In this case origin stands for the game the puzzle was found in.">Forrás</string>
   <string name="specialMoves">Különleges lépések</string>
   <string name="didYouLikeThisPuzzle">Tetszett ez a feladvány?</string>
   <string name="voteToLoadNextOne">Szavazz egy újért cserébe!</string>
@@ -42,4 +44,10 @@
   <string name="example">Példa</string>
   <string name="addAnotherTheme">Új téma hozzáadása</string>
   <string name="jumpToNextPuzzleImmediately">Rögtön a következő feladányhoz ugrás</string>
+  <string name="puzzleDashboard">Feladvány statisztika</string>
+  <string name="improvementAreas">Fejleszthető témák</string>
+  <string name="strengths">Erősségek</string>
+  <string name="history">Korábbi feladványok</string>
+  <string name="solved">megoldva</string>
+  <string name="failed">sikertelen</string>
 </resources>

@@ -9,6 +9,7 @@
   <string name="yourTurn">Twój ruch</string>
   <string name="aiNameLevelAiLevel">%1$s poziom %2$s</string>
   <string name="level">Poziom</string>
+  <string name="strength">Siła</string>
   <string name="toggleTheChat">Pokaż/ukryj rozmowy</string>
   <string name="toggleSound">Włącz/wyłącz dźwięk</string>
   <string name="chat">Czat</string>
@@ -436,7 +437,6 @@
   <string name="more">Więcej</string>
   <string name="memberSince">Zarejestrowany od</string>
   <string name="lastSeenActive">Widziano %s</string>
-  <string name="challengeToPlay">Zaproś do gry</string>
   <string name="player">Gracz</string>
   <string name="list">Lista</string>
   <string name="graph">Wykres</string>
@@ -568,6 +568,7 @@
   <string name="clockInitialTime">Początkowy czas zegara</string>
   <string name="clockIncrement">Przyrost czasu</string>
   <string name="privacy">Prywatność</string>
+  <string name="privacyPolicy">Polityka prywatności</string>
   <string name="letOtherPlayersFollowYou">Inni gracze mogą Cię obserwować</string>
   <string name="letOtherPlayersChallengeYou">Zezwól na zaproszenia od innych graczy</string>
   <string name="letOtherPlayersInviteYouToStudy">Inni gracze mogą zapraszać Cię do opracowania</string>
@@ -721,6 +722,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Jeśli nie widzisz wiadomości e-mail, sprawdź inne możliwe miejsca, takie jak kosz, spam lub inne foldery.</string>
   <string name="weHaveSentYouAnEmailTo">Wysłaliśmy wiadomość e-mail do %s.Kliknij w link znajdujący się w wiadomości aby zresetować swoje hasło.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Rejestrując się wyrażasz zgodę na przestrzeganie %s.</string>
+  <string name="readAboutOur">Przeczytaj o %s w naszym serwisie.</string>
   <string name="networkLagBetweenYouAndLichess">Opóźnienie sieci między Tobą a lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Czas przetwarzania ruchu na serwerze lichess</string>
   <string name="downloadAnnotated">Pobierz z komentarzem</string>
@@ -801,7 +803,6 @@
   <string name="error.unknown">Błąd</string>
   <string name="custom">Niestandardowa</string>
   <string name="notifications">Powiadomienia</string>
-  <string name="challenges">Zaproszenia</string>
   <string name="perfRatingX">Ranking: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s sekunda na wykonanie pierwszego ruchu</item>
@@ -852,12 +853,6 @@
   <string name="opening">Otwarcie</string>
   <string name="middlegame">Gra środkowa</string>
   <string name="endgame">Końcówka</string>
-  <string name="registerToSendChallenges">Zarejestruj, by zapraszać do gry.</string>
-  <string name="youCannotChallengeX">Nie możesz zaprosić %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s nie przyjmuje zaproszeń.</string>
-  <string name="yourXRatingIsTooFarFromY">Zbyt duża różnica rankingów (%1$s) między tobą a %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Nie możesz zapraszać ze względu na swój tymczasowy ranking (%s).</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s akceptuje tylko wyzwania od znajomych.</string>
   <string name="conditionalPremoves">Ruchy warunkowe</string>
   <string name="addCurrentVariation">Dodaj bieżący wariant</string>
   <string name="playVariationToCreateConditionalPremoves">Zagraj wariant, by utworzyć ruchy warunkowe</string>

@@ -237,10 +237,10 @@
   <string name="casualTournament">Amical</string>
   <string name="ratedTournament">Oficial</string>
   <string name="thisGameIsRated">Această partidă este oficială</string>
-  <string name="rematch">Revanşă</string>
+  <string name="rematch">Revanșă</string>
   <string name="rematchOfferSent">Propunerea de revanșă a fost trimisă</string>
-  <string name="rematchOfferSentWhite">Albul oferă remiză</string>
-  <string name="rematchOfferSentBlack">Negrul oferă remiză</string>
+  <string name="rematchOfferSentWhite">Albul oferă revanșa</string>
+  <string name="rematchOfferSentBlack">Negrul oferă revanșa</string>
   <string name="rematchOfferAccepted">Propunerea de revanșă a fost acceptată</string>
   <string name="rematchOfferCanceled">Propunerea de revanșă a fost anulată</string>
   <string name="rematchOfferDeclined">Propunerea de revanșă a fost respinsă</string>
@@ -409,7 +409,6 @@
   <string name="more">Mai mult</string>
   <string name="memberSince">Membru din</string>
   <string name="lastSeenActive">Ultima autentificare %s</string>
-  <string name="challengeToPlay">Provocați la o partidă</string>
   <string name="player">Jucător</string>
   <string name="list">Listă</string>
   <string name="graph">Grafic</string>
@@ -539,6 +538,7 @@
   <string name="clockInitialTime">Timpul inițial al ceasului</string>
   <string name="clockIncrement">Incrementarea ceasului</string>
   <string name="privacy">Confidențialitate</string>
+  <string name="privacyPolicy">Politica de confidențialitate</string>
   <string name="letOtherPlayersFollowYou">Permite altor jucători să te urmărească</string>
   <string name="letOtherPlayersChallengeYou">Permite altor jucători să te provoace la joc</string>
   <string name="letOtherPlayersInviteYouToStudy">Lasă alți jucători să te invite într-un studiu</string>
@@ -646,7 +646,7 @@
   <string name="aboutSimulImage">Din 50 de oponenți, Fischer a câștigat 47 de meciuri, a remizat în 2 meciuri și a pierdut 1 meci.</string>
   <string name="aboutSimulRealLife">Conceptul provine din evenimentele din lumea reală. În viața reală, jucătorul care acordă un simultan se deplasează de la o tablă la alta pentru a juca la fiecare câte o singură mutare.</string>
   <string name="aboutSimulRules">Când simultanul începe, fiecare jucător începe jocul cu gazda și va juca cu piesele albe. Simultanul se termină când toate jocurile sunt complete.</string>
-  <string name="aboutSimulSettings">Simultanele sunt tot timpul amicale. Revanșele, mutările înapoi și opțiune \"mai mult timp\" sunt dezactivate.</string>
+  <string name="aboutSimulSettings">Simultanele sunt tot timpul amicale. Revanșele, mutările înapoi și opțiunea \"mai mult timp\" sunt dezactivate.</string>
   <string name="create">Creează</string>
   <string name="whenCreateSimul">Când creezi un simultan, vei juca cu mai mulți jucători în același timp.</string>
   <string name="simulVariantsHint">Dacă alegi mai multe variante, fiecare jucător va avea de ales care variantă o va juca.</string>
@@ -670,11 +670,11 @@
   <string name="tournamentDoesNotExist">Acest turneu nu există.</string>
   <string name="tournamentMayHaveBeenCanceled">Posibil să fi fost anulat, dacă toți jucătorii au plecat înainte de începerea turneului.</string>
   <string name="returnToTournamentsHomepage">Înapoi la pagina turneului</string>
-  <string name="weeklyPerfTypeRatingDistribution">Distribuția %s săptămânală a palmaresului</string>
+  <string name="weeklyPerfTypeRatingDistribution">Distribuția săptămânală a palmaresului %s</string>
   <plurals name="nbPerfTypePlayersThisWeek">
-    <item quantity="one">%1$s %2$s jucător în această săptămână.</item>
-    <item quantity="few">%1$s %2$s jucători în această săptămână.</item>
-    <item quantity="other">%1$s %2$s jucători în această săptămână.</item>
+    <item quantity="one">%1$s jucător %2$s în această săptămână.</item>
+    <item quantity="few">%1$s jucători %2$s în această săptămână.</item>
+    <item quantity="other">%1$s jucători %2$s în această săptămână.</item>
   </plurals>
   <string name="yourPerfTypeRatingIsRating">Palmaresul dumneavoastră %1$s este %2$s.</string>
   <string name="youAreBetterThanPercentOfPerfTypePlayers">Sunteți mai bun decât %1$s dintre jucătorii de %2$s.</string>
@@ -688,6 +688,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Dacă nu vezi email-ul trimis, verifică și în alte locuri, cum ar fi folderul de spam, junk, mesaje sociale sau alte foldere.</string>
   <string name="weHaveSentYouAnEmailTo">Am trimis un email la %s. Fă click pe link-ul trimis în acel email pentru a-ți reseta parola.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Înregistrându-te, ești de acord cu %s.</string>
+  <string name="readAboutOur">Citește despre %s.</string>
   <string name="networkLagBetweenYouAndLichess">Întârziere de rețea între tine și lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Timpul necesar procesării unei mutări pe serverul lichess</string>
   <string name="downloadAnnotated">Descarcă cu note</string>
@@ -767,7 +768,6 @@
   <string name="error.unknown">Eroare</string>
   <string name="custom">Personalizat</string>
   <string name="notifications">Notificări</string>
-  <string name="challenges">Provocări</string>
   <string name="perfRatingX">Rating: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s secundă rămasă pentru a începe jocul</item>
@@ -816,12 +816,6 @@
   <string name="opening">Deschidere</string>
   <string name="middlegame">Mijlocul jocului</string>
   <string name="endgame">Sfârșitul jocului</string>
-  <string name="registerToSendChallenges">Vă rugăm să vă înregistrați pentru a trimite provocări.</string>
-  <string name="youCannotChallengeX">Nu puteți să-l provocați pe %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s nu acceptă provocări.</string>
-  <string name="yourXRatingIsTooFarFromY">Scorul tău de la %1$s este prea depărtat de scorul lui %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Nu puteți provoca din cauza scorului provizoriu %s.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s acceptă provocări doar de la prieteni.</string>
   <string name="conditionalPremoves">Mutări anticipate condiționale</string>
   <string name="addCurrentVariation">Adaugă variația curentă</string>
   <string name="playVariationToCreateConditionalPremoves">Joacă o variație pentru a crea mutări anticipate condiționale</string>

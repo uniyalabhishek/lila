@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="puzzles">タクティクス問題</string>
+  <string name="puzzleThemes">問題のテーマ</string>
   <string name="recommended">おすすめ</string>
   <string name="phases">序盤・中盤・終盤</string>
   <string name="motifs">モチーフ</string>
@@ -8,6 +9,7 @@
   <string name="lengths">手数</string>
   <string name="mates">メイト</string>
   <string name="goals">目標</string>
+  <string name="origin" comment="origin&#10;&#10;In this case origin stands for the game the puzzle was found in.">出所</string>
   <string name="specialMoves">特殊な手</string>
   <string name="didYouLikeThisPuzzle">この問題は気に入りましたか？</string>
   <string name="voteToLoadNextOne">投票すると次を読み込みます！</string>
@@ -41,4 +43,10 @@
   <string name="example">例</string>
   <string name="addAnotherTheme">別のテーマを追加</string>
   <string name="jumpToNextPuzzleImmediately">解いたらすぐ次の問題を読み込む</string>
+  <string name="puzzleDashboard">問題成績ボード</string>
+  <string name="improvementAreas">改善ポイント</string>
+  <string name="strengths">得意テーマ</string>
+  <string name="history">解答履歴</string>
+  <string name="solved">正答済</string>
+  <string name="failed">失敗</string>
 </resources>

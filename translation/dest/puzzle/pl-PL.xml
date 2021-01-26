@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="puzzles">Zadania szachowe</string>
+  <string name="puzzleThemes">Motywy zadań</string>
   <string name="recommended">Polecane</string>
   <string name="phases">Faza gry</string>
   <string name="motifs">Motyw</string>
@@ -8,6 +9,7 @@
   <string name="lengths">Długość zadania</string>
   <string name="mates">Maty</string>
   <string name="goals">Cele</string>
+  <string name="origin" comment="origin&#10;&#10;In this case origin stands for the game the puzzle was found in.">Źródło</string>
   <string name="specialMoves">Szczególne posunięcia</string>
   <string name="didYouLikeThisPuzzle">Czy podobało Ci się to zadanie?</string>
   <string name="voteToLoadNextOne">Zagłosuj, by wczytać następny!</string>
@@ -44,4 +46,10 @@
   <string name="example">Przykład</string>
   <string name="addAnotherTheme">Dodaj inny motyw</string>
   <string name="jumpToNextPuzzleImmediately">Natychmiast przejdź do następnego zadania</string>
+  <string name="puzzleDashboard">Tablica z zadaniami</string>
+  <string name="improvementAreas">Obszary rozwoju</string>
+  <string name="strengths">Siła</string>
+  <string name="history">Historia zadań</string>
+  <string name="solved">rozwiązane</string>
+  <string name="failed">nie udało się</string>
 </resources>

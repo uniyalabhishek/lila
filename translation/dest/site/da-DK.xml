@@ -9,6 +9,7 @@
   <string name="yourTurn">Din tur</string>
   <string name="aiNameLevelAiLevel">%1$s niveau %2$s</string>
   <string name="level">Niveau</string>
+  <string name="strength">Styrke</string>
   <string name="toggleTheChat">Skjul/Vis chat</string>
   <string name="toggleSound">slå lyd til/fra</string>
   <string name="chat">Chat</string>
@@ -373,7 +374,7 @@
   <string name="xStartedFollowingY">%1$s følger nu %2$s</string>
   <plurals name="nbFollowers">
     <item quantity="one">%s som følger</item>
-    <item quantity="other">%s som følger</item>
+    <item quantity="other">%s følgere</item>
   </plurals>
   <plurals name="nbFollowing">
     <item quantity="one">%s følger</item>
@@ -382,7 +383,6 @@
   <string name="more">Mere</string>
   <string name="memberSince">Medlem siden</string>
   <string name="lastSeenActive">Sidst logget ind %s</string>
-  <string name="challengeToPlay">Send en udfordring</string>
   <string name="player">Spiller</string>
   <string name="list">Liste</string>
   <string name="graph">Graf</string>
@@ -510,6 +510,7 @@
   <string name="clockInitialTime">Indledende tid på ur</string>
   <string name="clockIncrement">Ur-forøgelse</string>
   <string name="privacy">Privat</string>
+  <string name="privacyPolicy">Privatlivspolitik</string>
   <string name="letOtherPlayersFollowYou">Lad andre spillere følge dig</string>
   <string name="letOtherPlayersChallengeYou">Lad andre spillere udfordre dig</string>
   <string name="letOtherPlayersInviteYouToStudy">Lad andre spillere invitere dig til at studere</string>
@@ -640,7 +641,7 @@
   <string name="returnToTournamentsHomepage">Vend tilbage til turnerings-forsiden</string>
   <string name="weeklyPerfTypeRatingDistribution">Månedlig %s rating fordeling</string>
   <plurals name="nbPerfTypePlayersThisWeek">
-    <item quantity="one">En %2$s spiller i denne uge.</item>
+    <item quantity="one">%1$s %2$s spiller denne uge.</item>
     <item quantity="other">%1$s %2$s spillere denne uge.</item>
   </plurals>
   <string name="yourPerfTypeRatingIsRating">Din %1$s rating er %2$s</string>
@@ -655,6 +656,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Hvis du ikke kan se emailen, bør du kontrollere andre steder den kan være endt, som i din junk, spam eller andre mapper.</string>
   <string name="weHaveSentYouAnEmailTo">Vi har sendt en e-mail til %s. Klik på linket i e-mailen for at nulstille din adgangskode.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Ved at registrere, accepterer du at være bundet af vores %s.</string>
+  <string name="readAboutOur">Læs om vores %s.</string>
   <string name="networkLagBetweenYouAndLichess">Netværksforsinkelse mellem dig og lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Tid til at behandle et træk på Lichess-server</string>
   <string name="downloadAnnotated">Download kommenteret</string>
@@ -733,7 +735,6 @@
   <string name="error.unknown">Fejl</string>
   <string name="custom">Tilpasset</string>
   <string name="notifications">Meddelelser</string>
-  <string name="challenges">Udfordringer</string>
   <string name="perfRatingX">Rating: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s sekund til at lave det første træk</item>
@@ -780,12 +781,6 @@
   <string name="opening">Åbningsspil</string>
   <string name="middlegame">Midtspil</string>
   <string name="endgame">Slutspil</string>
-  <string name="registerToSendChallenges">Opret konto for at sende udfordringer.</string>
-  <string name="youCannotChallengeX">Du kan ikke udfordre %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s accepterer ikke udfordringer.</string>
-  <string name="yourXRatingIsTooFarFromY">Din %1$s rating er for langt fra %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Kan ikke udfordre på grund af midlertidig %s rating.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s accepterer kun udfordringer fra venner.</string>
   <string name="conditionalPremoves">Betingede forhåndstræk</string>
   <string name="addCurrentVariation">Tilføj nuværende variation</string>
   <string name="playVariationToCreateConditionalPremoves">Spil en variation for at lave betingede forhåndstræk</string>

@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="puzzles">Opgaver</string>
+  <string name="puzzleThemes">Opgavetemaer</string>
   <string name="recommended">Anbefalet</string>
   <string name="phases">Faser</string>
-  <string name="motifs">Begrundelser</string>
+  <string name="motifs">Motiv</string>
   <string name="advanced">Avanceret</string>
   <string name="lengths">Længder</string>
   <string name="mates">Matter</string>
   <string name="goals">Mål</string>
+  <string name="origin" comment="origin&#10;&#10;In this case origin stands for the game the puzzle was found in.">Oprindelse</string>
   <string name="specialMoves">Særlige træk</string>
   <string name="didYouLikeThisPuzzle">Kunne du lide denne opgave?</string>
   <string name="voteToLoadNextOne">Stem for at indlæse den næste!</string>
@@ -23,7 +25,7 @@
   <string name="keepGoing">Bliv ved…</string>
   <string name="puzzleSuccess">Succes!</string>
   <string name="puzzleComplete">Opgave løst!</string>
-  <string name="notTheMove">Det er ikke trækket!</string>
+  <string name="notTheMove">Ikke det rigtige træk!</string>
   <string name="trySomethingElse">Prøv noget andet.</string>
   <string name="ratingX">Rating: %s</string>
   <string name="hidden">skjult</string>
@@ -42,4 +44,10 @@
   <string name="example">Eksempel</string>
   <string name="addAnotherTheme">Tilføj et andet tema</string>
   <string name="jumpToNextPuzzleImmediately">Spring straks videre til næste opgave</string>
+  <string name="puzzleDashboard">Opgave-kontrolpanel</string>
+  <string name="improvementAreas">Forbedringsområder</string>
+  <string name="strengths">Styrke</string>
+  <string name="history">Opgavehistorik</string>
+  <string name="solved">løst</string>
+  <string name="failed">mislykket</string>
 </resources>

@@ -1,9 +1,10 @@
 package lila.socket
 
 import akka.actor.{ ActorSystem, CoordinatedShutdown }
+import cats.data.NonEmptyList
 import chess.{ Centis, Color }
 import io.lettuce.core._
-import io.lettuce.core.pubsub.StatefulRedisPubSubConnection
+import io.lettuce.core.pubsub.{ StatefulRedisPubSubConnection => PubSub }
 import java.util.concurrent.atomic.AtomicReference
 import java.util.concurrent.ConcurrentHashMap
 import play.api.libs.json._
@@ -61,9 +62,6 @@ final class RemoteSocket(
       Bus.publish(TellSriIn(sri.value, userId, msg), s"remoteSocketIn:$typ")
     case In.TellUser(userId, typ, msg) =>
       Bus.publish(TellUserIn(userId, msg), s"remoteSocketIn:$typ")
-    case In.WsBoot =>
-      logger.warn("Remote socket boot")
-      onlineUserIds set Set("lichess")
     case In.ReqResponse(reqId, response) =>
       requests
         .computeIfPresent(
@@ -74,6 +72,10 @@ final class RemoteSocket(
           }
         )
         .unit
+    case In.Ping(id) => send(Out.pong(id))
+    case In.WsBoot =>
+      logger.warn("Remote socket boot")
+      onlineUserIds set Set("lichess")
   }
 
   Bus.subscribeFun(
@@ -109,27 +111,58 @@ final class RemoteSocket(
       send(Out.impersonate(userId, modId))
     case ApiUserIsOnline(userId, value) =>
       send(Out.apiUserOnline(userId, value))
+      if (value) onlineUserIds.getAndUpdate(_ + userId).unit
     case Follow(u1, u2)   => send(Out.follow(u1, u2))
     case UnFollow(u1, u2) => send(Out.unfollow(u1, u2))
   }
 
-  final class StoppableSender(conn: StatefulRedisPubSubConnection[String, String], channel: Channel)
-      extends Sender {
-    def apply(msg: String): Unit = if (!stopping) conn.async.publish(channel, msg).unit
+  final class StoppableSender(conn: PubSub[String, String], channel: Channel) extends Sender {
+    def apply(msg: String): Unit               = if (!stopping) conn.async.publish(channel, msg).unit
+    def sticky(_id: String, msg: String): Unit = apply(msg)
   }
 
-  def makeSender(channel: Channel): Sender = new StoppableSender(redisClient.connectPubSub(), channel)
+  final class RoundRobinSender(conn: PubSub[String, String], channel: Channel, parallelism: Int)
+      extends Sender {
+    def apply(msg: String): Unit = publish(msg.hashCode.abs % parallelism, msg)
+    // use the ID to select the channel, not the entire message
+    def sticky(id: String, msg: String): Unit = publish(id.hashCode.abs % parallelism, msg)
+
+    private def publish(subChannel: Int, msg: String) =
+      if (!stopping) conn.async.publish(s"$channel:$subChannel", msg).unit
+  }
+
+  def makeSender(channel: Channel, parallelism: Int = 1): Sender =
+    if (parallelism > 1) new RoundRobinSender(redisClient.connectPubSub(), channel, parallelism)
+    else new StoppableSender(redisClient.connectPubSub(), channel)
 
   private val send: Send = makeSender("site-out").apply _
 
-  def subscribe(channel: Channel, reader: In.Reader)(handler: Handler): Future[Unit] = {
+  def subscribe(channel: Channel, reader: In.Reader)(handler: Handler): Funit =
+    connectAndSubscribe(channel) { message =>
+      reader(RawMsg(message)) collect handler match {
+        case Some(_) => // processed
+        case None    => logger.warn(s"Unhandled $channel $message")
+      }
+    }
+
+  def subscribeRoundRobin(channel: Channel, reader: In.Reader, parallelism: Int)(
+      handler: Handler
+  ): Funit =
+    // subscribe to main channel
+    subscribe(channel, reader)(handler) >> {
+      // and subscribe to subchannels
+      (0 to parallelism)
+        .map { index =>
+          subscribe(s"$channel:$index", reader)(handler)
+        }
+        .sequenceFu
+        .void
+    }
+
+  private def connectAndSubscribe(channel: Channel)(f: String => Unit): Funit = {
     val conn = redisClient.connectPubSub()
     conn.addListener(new pubsub.RedisPubSubAdapter[String, String] {
-      override def message(_channel: String, message: String): Unit =
-        reader(RawMsg(message)) collect handler match {
-          case Some(_) => // processed
-          case None    => logger.warn(s"Unhandled $channel $message")
-        }
+      override def message(_channel: String, message: String): Unit = f(message)
     })
     val subPromise = Promise[Unit]()
     conn.async.subscribe(channel).thenRun { () =>
@@ -163,6 +196,7 @@ object RemoteSocket {
 
   trait Sender {
     def apply(msg: String): Unit
+    def sticky(_id: String, msg: String): Unit
   }
 
   object Protocol {
@@ -193,6 +227,7 @@ object RemoteSocket {
       case class TellSri(sri: Sri, userId: Option[String], typ: String, msg: JsObject) extends In
       case class TellUser(userId: String, typ: String, msg: JsObject)                  extends In
       case class ReqResponse(reqId: Int, response: String)                             extends In
+      case class Ping(id: String)                                                      extends In
 
       val baseReader: Reader = raw =>
         raw.path match {
@@ -232,6 +267,7 @@ object RemoteSocket {
             raw.get(2) { case Array(reqId, response) =>
               reqId.toIntOption map { ReqResponse(_, response) }
             }
+          case "ping" => Ping(raw.args).some
           case "boot" => WsBoot.some
           case _      => none
         }
@@ -273,6 +309,7 @@ object RemoteSocket {
       def unfollow(u1: String, u2: String)     = s"rel/unfollow $u1 $u2"
       def apiUserOnline(u: String, v: Boolean) = s"api/online $u ${boolean(v)}"
       def boot                                 = "boot"
+      def pong(id: String)                     = s"pong $id"
       def stop(reqId: Int)                     = s"lila/stop $reqId"
 
       def commas(strs: Iterable[Any]): String = if (strs.isEmpty) "-" else strs mkString ","

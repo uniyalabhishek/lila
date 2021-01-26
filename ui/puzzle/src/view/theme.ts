@@ -1,13 +1,13 @@
 import { bind, dataIcon } from '../util';
-import { Controller } from '../interfaces';
+import { Controller, MaybeVNode } from '../interfaces';
 import { h } from 'snabbdom';
 import { VNode } from 'snabbdom/vnode';
 
 const studyUrl = 'https://lichess.org/study/viiWlKjv';
 
-export default function theme(ctrl: Controller): VNode {
+export default function theme(ctrl: Controller): MaybeVNode {
   const t = ctrl.getData().theme;
-  return h('div.puzzle__side__theme', [
+  return ctrl.getData().replay ? null : h('div.puzzle__side__theme', [
     h('a', { attrs: { href: '/training/themes' } }, h('h2', ['« ', t.name])),
     h('p', [
       t.desc,
@@ -22,13 +22,15 @@ export default function theme(ctrl: Controller): VNode {
   ]);
 }
 
+const invisibleThemes = new Set(['master', 'masterVsMaster', 'superGM']);
+
 const editor = (ctrl: Controller): VNode => {
   const data = ctrl.getData(),
     trans = ctrl.trans.noarg,
     votedThemes = ctrl.vm.round?.themes || {};
-  const visibleThemes: string[] = data.puzzle.themes.concat(
+  const visibleThemes: string[] = data.puzzle.themes.filter(t => !invisibleThemes.has(t)).concat(
     Object.keys(votedThemes).filter(t => votedThemes[t] && !data.puzzle.themes.includes(t))
-  ).sort()
+  ).sort();
   const allThemes = location.pathname == '/training/daily' ? null : ctrl.allThemes;
   const availableThemes = allThemes ? allThemes.dynamic.filter(t => !votedThemes[t]) : null;
   if (availableThemes) availableThemes.sort((a, b) => trans(a) < trans(b) ? -1 : 1);

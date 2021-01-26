@@ -382,7 +382,6 @@
   <string name="more">Més</string>
   <string name="memberSince">Membre des del</string>
   <string name="lastSeenActive">Darrer accés %s</string>
-  <string name="challengeToPlay">Desafia per a jugar</string>
   <string name="player">Jugador</string>
   <string name="list">Llista</string>
   <string name="graph">Gràfica</string>
@@ -505,9 +504,12 @@
   <string name="currentPassword">Contrasenya actual</string>
   <string name="newPassword">Nova contrasenya</string>
   <string name="newPasswordAgain">Nova contrasenya (de nou)</string>
+  <string name="newPasswordsDontMatch">La nova contrasenya no es correspón</string>
+  <string name="newPasswordStrength">Solidesa de la contrasenya</string>
   <string name="clockInitialTime">Temps inicial al rellotge</string>
   <string name="clockIncrement">Increment de temps</string>
   <string name="privacy">Privacitat</string>
+  <string name="privacyPolicy">Política de privacitat</string>
   <string name="letOtherPlayersFollowYou">Deixa que altres jugadors et segueixin</string>
   <string name="letOtherPlayersChallengeYou">Deixa que altres jugadors et reptin</string>
   <string name="letOtherPlayersInviteYouToStudy">Permetre que altres jugadors et conviden a un estudi</string>
@@ -656,6 +658,7 @@ en %3$s</string>
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Si no veus l\'email, comprova altres llocs on pugui ser, com el correu brossa, spam, o altres carpetes</string>
   <string name="weHaveSentYouAnEmailTo">Hem enviat un correu electrònic a %s. Clica a l\'enllaç per renovar la teva contrasenya.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">En registrar-te,dones la teva conformitat a estar legalment obligats per el nostre %s.</string>
+  <string name="readAboutOur">Llegeix sobre la nostre %s.</string>
   <string name="networkLagBetweenYouAndLichess">Retard de la xarxa entre tu i lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Temps per processar un moviment al servidor lichess</string>
   <string name="downloadAnnotated">Descàrrega anotada</string>
@@ -734,7 +737,6 @@ en %3$s</string>
   <string name="error.unknown">Error</string>
   <string name="custom">Personalitzat</string>
   <string name="notifications">Avisos</string>
-  <string name="challenges">Reptes</string>
   <string name="perfRatingX">Classificació: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s segon per jugar el primer moviment</item>
@@ -781,12 +783,6 @@ en %3$s</string>
   <string name="opening">Obertura</string>
   <string name="middlegame">Joc mitjà</string>
   <string name="endgame">Final</string>
-  <string name="registerToSendChallenges">Si us plau, registra\'t per enviar reptes.</string>
-  <string name="youCannotChallengeX">No pots desafiar a %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s no accepta reptes.</string>
-  <string name="yourXRatingIsTooFarFromY">La teva qualificació de %1$s és massa llunyana de la de %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">No es pot desafiar a causa de la qualificació provisional de %s.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s només acepta reptes dels amics.</string>
   <string name="conditionalPremoves">Premoviments condicionals</string>
   <string name="addCurrentVariation">Afegir variació actual</string>
   <string name="playVariationToCreateConditionalPremoves">Jugar una variació per crear premoviments condicionals</string>

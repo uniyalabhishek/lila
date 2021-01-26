@@ -9,6 +9,7 @@
   <string name="yourTurn">Ti si na potezi</string>
   <string name="aiNameLevelAiLevel">%1$s, stopnja: %2$s</string>
   <string name="level">Stopnja</string>
+  <string name="strength">Moč</string>
   <string name="toggleTheChat">Preklopi klepet</string>
   <string name="toggleSound">Preklopi zvok</string>
   <string name="chat">Klepet</string>
@@ -436,7 +437,6 @@
   <string name="more">Več</string>
   <string name="memberSince">Član od</string>
   <string name="lastSeenActive">Zadnja prijava %s</string>
-  <string name="challengeToPlay">Izzovi na igro</string>
   <string name="player">Igralec</string>
   <string name="list">Seznam</string>
   <string name="graph">Graf</string>
@@ -568,6 +568,7 @@
   <string name="clockInitialTime">Začetni čas</string>
   <string name="clockIncrement">Dodatek k času</string>
   <string name="privacy">Zasebnost</string>
+  <string name="privacyPolicy">Politika zasebnosti</string>
   <string name="letOtherPlayersFollowYou">Dovolite da vam sledijo</string>
   <string name="letOtherPlayersChallengeYou">Dovolite da vas izzovejo na partijo</string>
   <string name="letOtherPlayersInviteYouToStudy">Dovoli igralcem, da te povabijo na študij</string>
@@ -724,6 +725,7 @@ v %3$s</string>
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Če ne vidite elektronskega sporočila, preverite druga mesta, kjer bi lahko bilo, npr. v smetnjaku ali v drugih mapah.</string>
   <string name="weHaveSentYouAnEmailTo">Elektronsko pošto smo poslali na %s. Kliknite na povezavo v emailu, da obnovite svoje geslo.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Z registracijo se strinjate z našimi %s.</string>
+  <string name="readAboutOur">Preberite o naši %s.</string>
   <string name="networkLagBetweenYouAndLichess">Omrežna zakasnitev med vami in lichessom</string>
   <string name="timeToProcessAMoveOnLichessServer">Čas za obdelavo poteze na lichess strežniku</string>
   <string name="downloadAnnotated">Prenesi s komentarji</string>
@@ -804,7 +806,6 @@ v %3$s</string>
   <string name="error.unknown">Napaka</string>
   <string name="custom">Po meri</string>
   <string name="notifications">Obvestila</string>
-  <string name="challenges">Izzivi</string>
   <string name="perfRatingX">Rating: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s sekund za prvo potezo</item>
@@ -855,12 +856,6 @@ v %3$s</string>
   <string name="opening">Otvoritev</string>
   <string name="middlegame">Sredina igre</string>
   <string name="endgame">Končnica</string>
-  <string name="registerToSendChallenges">Če želite poslati izziv, se prosim registrirajte.</string>
-  <string name="youCannotChallengeX">Ne morete izzvati %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s ne sprejema izzivov.</string>
-  <string name="yourXRatingIsTooFarFromY">Vaš %1$s rating je predaleč od ratinga igralca %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Izzivanje ni mogoče, zaradi začasnega %s ratinga.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s sprejema izzive samo od prijateljev.</string>
   <string name="conditionalPremoves">Pogojne predpoteze</string>
   <string name="addCurrentVariation">Dodaj trenutno varianto</string>
   <string name="playVariationToCreateConditionalPremoves">Igrajte varianto, za ustvarjanje pogojnih predpotez</string>

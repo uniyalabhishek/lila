@@ -104,7 +104,7 @@ trait GameHelper { self: I18nHelper with UserHelper with AiHelper with StringHel
         )
       }
     ) { level =>
-      raw(s"A.I. level $level")
+      frag(aiName(level))
     }
 
   def playerText(player: Player, withRating: Boolean = false) =
@@ -155,7 +155,7 @@ trait GameHelper { self: I18nHelper with UserHelper with AiHelper with StringHel
               frag(" ", showRatingDiff(d))
             },
             engine option span(
-              cls := "engine_mark",
+              cls := "tos_violation",
               title := trans.thisAccountViolatedTos.txt()
             )
           ),

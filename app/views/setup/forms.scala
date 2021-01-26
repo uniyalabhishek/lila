@@ -64,21 +64,21 @@ object forms {
         renderTimeMode(form),
         if (ctx.blind)
           frag(
-            renderLabel(form("level"), trans.level()),
+            renderLabel(form("level"), trans.strength()),
             renderSelect(form("level"), lila.setup.AiConfig.levelChoices),
             blindSideChoice(form)
           )
         else
           frag(
             br,
-            trans.level(),
+            trans.strength(),
             div(cls := "level buttons")(
               div(id := "config_level")(
                 renderRadios(form("level"), lila.setup.AiConfig.levelChoices)
               ),
               div(cls := "ai_info")(
                 ratings.toList.map { case (level, _) =>
-                  div(cls := s"${prefix}level_$level")(trans.aiNameLevelAiLevel("A.I.", level))
+                  div(cls := s"${prefix}level_$level")(trans.aiNameLevelAiLevel("Stockfish 12", level))
                 }
               )
             )
@@ -94,7 +94,7 @@ object forms {
   )(implicit ctx: Context) =
     layout(
       "friend",
-      (if (user.isDefined) trans.challengeToPlay else trans.playWithAFriend)(),
+      (if (user.isDefined) trans.challenge.challengeToPlay else trans.playWithAFriend)(),
       routes.Setup.friend(user map (_.id)),
       error.map(e => raw(e.replace("{{user}}", userIdLink(user.map(_.id)).toString)))
     )(

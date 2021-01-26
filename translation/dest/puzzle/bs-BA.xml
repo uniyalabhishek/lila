@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="puzzles">Problemi</string>
+  <string name="puzzleThemes">Teme problema</string>
   <string name="recommended">Preporučeno</string>
   <string name="phases">Faze</string>
   <string name="motifs">Motivi</string>
@@ -37,4 +38,8 @@
   <string name="example">Primjer</string>
   <string name="addAnotherTheme">Dodajte drugu temu</string>
   <string name="jumpToNextPuzzleImmediately">Odmah skočite na sljedeći problem</string>
+  <string name="puzzleDashboard">Kontrolna tabla za probleme</string>
+  <string name="improvementAreas">Područja za poboljšanje</string>
+  <string name="strengths">Jake strane</string>
+  <string name="solved">riješeno</string>
 </resources>
