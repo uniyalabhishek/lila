@@ -2,6 +2,7 @@ import PuzzleSession from './session';
 import { Api as CgApi } from 'chessground/api';
 import { CevalCtrl, NodeEvals } from 'ceval';
 import { Config as CgConfig } from 'chessground/config';
+import { Deferred } from 'common/defer';
 import { Outcome } from 'chessops/types';
 import { Prop } from 'common';
 import { Role, Move } from 'chessops/types';
@@ -75,7 +76,7 @@ export interface Vm {
   pov: Color;
   mode: 'play' | 'view' | 'try';
   round?: PuzzleRound;
-  next: DeferPromise.Deferred<PuzzleData>;
+  next: Deferred<PuzzleData>;
   justPlayed?: Key;
   resultSent: boolean;
   lastFeedback: 'init' | 'fail' | 'win' | 'good' | 'retry';
@@ -108,7 +109,6 @@ export interface PuzzlePrefs {
   rookCastle: boolean;
   moveEvent: number;
   highlight: boolean;
-  resizeHandle: number;
   animation: {
     duration: number;
   };
@@ -127,6 +127,13 @@ export interface PuzzleData {
   theme: Theme;
   game: PuzzleGame;
   user: PuzzleUser | undefined;
+  replay?: PuzzleReplay;
+}
+
+export interface PuzzleReplay {
+  i: number;
+  of: number;
+  days: number;
 }
 
 export interface PuzzleGame {
@@ -136,9 +143,16 @@ export interface PuzzleGame {
     name: string;
   };
   rated: boolean;
-  players: Array<{ userId: string, name: string, color: Color }>;
+  players: [PuzzlePlayer, PuzzlePlayer];
   pgn: string;
   clock: string;
+}
+
+export interface PuzzlePlayer {
+  userId: string;
+  name: string;
+  title?: string;
+  color: Color;
 }
 
 export interface PuzzleUser {
@@ -158,6 +172,7 @@ export interface Puzzle {
 export interface PuzzleResult {
   round?: PuzzleRound;
   next: PuzzleData;
+  replayComplete?: boolean;
 }
 
 export interface RoundThemes {

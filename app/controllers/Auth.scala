@@ -5,11 +5,13 @@ import play.api.data.FormError
 import play.api.libs.json._
 import play.api.mvc._
 import scala.annotation.nowarn
+import scala.concurrent.duration._
 import views._
 
 import lila.api.Context
 import lila.app._
 import lila.common.{ EmailAddress, HTTPRequest }
+import lila.memo.RateLimit
 import lila.security.SecurityForm.{ MagicLink, PasswordReset }
 import lila.security.{ FingerPrint, Signup }
 import lila.user.User.ClearPassword
@@ -33,16 +35,18 @@ final class Auth(
       }
     }
 
+  private def getReferrer(implicit ctx: Context) =
+    get("referrer").filter(env.api.referrerRedirect.valid) orElse
+      ctxReq.session.get(api.AccessUri) getOrElse
+      routes.Lobby.home().url
+
   def authenticateUser(u: UserModel, result: Option[String => Result] = None)(implicit
       ctx: Context
   ): Fu[Result] =
     api.saveAuthentication(u.id, ctx.mobileApiVersion) flatMap { sessionId =>
       negotiate(
         html = fuccess {
-          val redirectTo = get("referrer").filter(env.api.referrerRedirect.valid) orElse
-            ctxReq.session.get(api.AccessUri) getOrElse
-            routes.Lobby.home().url
-          result.fold(Redirect(redirectTo))(_(redirectTo))
+          result.fold(Redirect(getReferrer))(_(getReferrer))
         },
         api = _ => mobileUserOk(u, sessionId)
       ) map authenticateCookie(sessionId)
@@ -141,9 +145,9 @@ final class Auth(
 
   // mobile app BC logout with GET
   def logoutGet =
-    Open { implicit ctx =>
+    Auth { implicit ctx => _ =>
       negotiate(
-        html = notFound,
+        html = Ok(html.auth.bits.logout()).fuccess,
         api = _ => {
           ctxReq.session get api.sessionIdKey foreach env.security.store.delete
           Ok(Json.obj("ok" -> true)).withCookies(env.lilaCookie.newSession).fuccess
@@ -423,38 +427,69 @@ final class Auth(
       }
     }
 
+  private lazy val magicLinkLoginRateLimitPerToken = new RateLimit[String](
+    credits = 3,
+    duration = 1 hour,
+    key = "login.magicLink.token"
+  )
+
   def magicLinkLogin(token: String) =
     Open { implicit ctx =>
-      env.security.magicLink confirm token flatMap {
-        case None =>
-          lila.mon.user.auth.magicLinkConfirm("token_fail").increment()
-          notFound
-        case Some(user) =>
-          authLog(user.username, "-", "Magic link")
-          authenticateUser(user) >>-
-            lila.mon.user.auth.magicLinkConfirm("success").increment().unit
-      }
+      magicLinkLoginRateLimitPerToken(token) {
+        env.security.magicLink confirm token flatMap {
+          case None =>
+            lila.mon.user.auth.magicLinkConfirm("token_fail").increment()
+            notFound
+          case Some(user) =>
+            authLog(user.username, "-", "Magic link")
+            authenticateUser(user) >>-
+              lila.mon.user.auth.magicLinkConfirm("success").increment().unit
+        }
+      }(rateLimitedFu)
     }
 
-  def makeLoginToken =
-    Auth { _ => me =>
-      JsonOk {
-        env.security.loginToken generate me map { token =>
-          Json.obj(
-            "userId" -> me.id,
-            "url"    -> s"${env.net.baseUrl}${routes.Auth.loginWithToken(token).url}"
-          )
-        }
-      }
+  private def loginTokenFor(me: UserModel) = JsonOk {
+    env.security.loginToken generate me map { token =>
+      Json.obj(
+        "userId" -> me.id,
+        "url"    -> s"${env.net.baseUrl}${routes.Auth.loginWithToken(token).url}"
+      )
     }
+  }
+
+  def makeLoginToken =
+    AuthOrScoped(_.Web.Login)(_ => loginTokenFor, _ => loginTokenFor)
 
   def loginWithToken(token: String) =
     Open { implicit ctx =>
-      Firewall {
-        env.security.loginToken consume token flatMap {
-          _.fold(notFound)(authenticateUser(_))
+      if (ctx.isAuth) Redirect(getReferrer).fuccess
+      else
+        Firewall {
+          consumingToken(token) { user =>
+            env.security.loginToken.generate(user) map { newToken =>
+              Ok(html.auth.bits.tokenLoginConfirmation(user, newToken, get("referrer")))
+            }
+          }
         }
-      }
+    }
+
+  def loginWithTokenPost(token: String, referrer: Option[String]) =
+    Open { implicit ctx =>
+      if (ctx.isAuth) Redirect(getReferrer).fuccess
+      else
+        Firewall {
+          consumingToken(token) { authenticateUser(_) }
+        }
+    }
+
+  private def consumingToken(token: String)(f: UserModel => Fu[Result])(implicit ctx: Context) =
+    env.security.loginToken consume token flatMap {
+      case None =>
+        BadRequest {
+          import scalatags.Text.all.stringFrag
+          html.site.message("This token has expired.")(stringFrag("Please go back and try again."))
+        }.fuccess
+      case Some(user) => f(user)
     }
 
   implicit private val limitedDefault =

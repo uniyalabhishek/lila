@@ -9,6 +9,7 @@
   <string name="yourTurn">Ditt trekk</string>
   <string name="aiNameLevelAiLevel">%1$s på nivå %2$s</string>
   <string name="level">Nivå</string>
+  <string name="strength">Styrke</string>
   <string name="toggleTheChat">Chat av/på</string>
   <string name="toggleSound">Lyd av/på</string>
   <string name="chat">Chat</string>
@@ -382,7 +383,6 @@
   <string name="more">Mer</string>
   <string name="memberSince">Medlem siden</string>
   <string name="lastSeenActive">Forrige pålogging %s</string>
-  <string name="challengeToPlay">Utfordre til et parti</string>
   <string name="player">Spiller</string>
   <string name="list">Liste</string>
   <string name="graph">Graf</string>
@@ -510,6 +510,7 @@
   <string name="clockInitialTime">Starttid på klokken</string>
   <string name="clockIncrement">Inkrement</string>
   <string name="privacy">Personvern</string>
+  <string name="privacyPolicy">personvernerklæringen</string>
   <string name="letOtherPlayersFollowYou">La andre spillere følge deg</string>
   <string name="letOtherPlayersChallengeYou">La andre spillere utfordre deg</string>
   <string name="letOtherPlayersInviteYouToStudy">La andre spillere invitere deg til studier</string>
@@ -654,7 +655,8 @@
   <string name="weHaveSentYouAnEmailClickTheLink">Vi har sent deg en e-post. Klikk på linken i e-posten for å aktivere din konto.</string>
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Om du ikke ser e-posten, sjekk andre steder den kan være, som søppel, spam, sosial, eller andre mapper.</string>
   <string name="weHaveSentYouAnEmailTo">Vi har sendt en e-post til %s. Klikk på linken i e-posten for å tilbakestille passordet ditt.</string>
-  <string name="byRegisteringYouAgreeToBeBoundByOur">Ved å registrere deg, godtar du å våre %s.</string>
+  <string name="byRegisteringYouAgreeToBeBoundByOur">Ved å registrere deg godtar du våre %s.</string>
+  <string name="readAboutOur">Les %s vår.</string>
   <string name="networkLagBetweenYouAndLichess">Nettverksforsinkelsen mellom deg og lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Tiden det tar å behandle et trekk på lichess-serveren</string>
   <string name="downloadAnnotated">Last ned kommentert</string>
@@ -718,7 +720,7 @@
   <string name="usernameAlreadyUsed">Brukernavnet er allerede i bruk, prøv et annet et.</string>
   <string name="usernamePrefixInvalid">Det første tegnet i brukernavnet må være en bokstav.</string>
   <string name="usernameSuffixInvalid">Det siste tegnet i brukernavnet må være en bokstav eller et tall.</string>
-  <string name="usernameCharsInvalid">Brukernavnet kan bare bestå av bokstaver, tall, understrekingstegn og bindestreker.</string>
+  <string name="usernameCharsInvalid">Brukernavnet kan bare bestå av bokstaver, tall, understrekingstegn og bindestreker. Det er ikke lov med flere understrekingstegn eller bindestreker på rad.</string>
   <string name="usernameUnacceptable">Dette brukernavnet er ikke akseptabelt.</string>
   <string name="directlySupportLichess">Støtt Lichess direkte</string>
   <string name="playChessInStyle">Spill sjakk med stil</string>
@@ -733,7 +735,6 @@
   <string name="error.unknown">Feil</string>
   <string name="custom">Tilpasset</string>
   <string name="notifications">Varsler</string>
-  <string name="challenges">Utfordringer</string>
   <string name="perfRatingX">Rating: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s sekund til å ta det første trekket</item>
@@ -780,12 +781,6 @@
   <string name="opening">Åpning</string>
   <string name="middlegame">Midtspill</string>
   <string name="endgame">Sluttspill</string>
-  <string name="registerToSendChallenges">Opprett en konto om du vil utforde andre.</string>
-  <string name="youCannotChallengeX">Du kan ikke utfordre %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s aksepterer ikke utfordringer.</string>
-  <string name="yourXRatingIsTooFarFromY">%1$s-ratingen din er for langt unna %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Kan ikke utfordre på grunn av provisorisk %s-rating.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s aksepterer kun utfordringer fra venner.</string>
   <string name="conditionalPremoves">Betingede forhåndstrekk</string>
   <string name="addCurrentVariation">Føy til gjeldende variant</string>
   <string name="playVariationToCreateConditionalPremoves">Spill en variant for å lage betingede forhåndstrekk</string>

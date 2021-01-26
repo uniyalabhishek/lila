@@ -83,14 +83,15 @@ object layout {
     else "Enable"} blind mode</button></form>""")
   private val zenToggle = raw("""<a data-icon="E" id="zentog" class="text fbt active">ZEN MODE</a>""")
   private def dasher(me: lila.user.User) =
-    raw(
-      s"""<div class="dasher"><a id="user_tag" class="toggle link">${me.username}</a><div id="dasher_app" class="dropdown"></div></div>"""
+    div(cls := "dasher")(
+      a(id := "user_tag", cls := "toggle link", href := routes.Auth.logoutGet())(me.username),
+      div(id := "dasher_app", cls := "dropdown")
     )
 
   private def allNotifications(implicit ctx: Context) =
     spaceless(s"""<div>
   <a id="challenge-toggle" class="toggle link">
-    <span title="${trans.challenges
+    <span title="${trans.challenge.challenges
       .txt()}" class="data-count" data-count="${ctx.nbChallenges}" data-icon="U"></span>
   </a>
   <div id="challenge-app" class="dropdown"></div>

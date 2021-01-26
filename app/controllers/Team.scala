@@ -10,7 +10,7 @@ import views._
 import lila.api.Context
 import lila.app._
 import lila.common.config.MaxPerSecond
-import lila.team.{ Joined, Motivate, Team => TeamModel }
+import lila.team.{ Requesting, Team => TeamModel }
 import lila.user.{ User => UserModel }
 
 final class Team(
@@ -233,58 +233,64 @@ final class Team(
     AuthOrScopedBody(_.Team.Write)(
       auth = implicit ctx =>
         me =>
-          api countTeamsOf me flatMap { nb =>
-            if (nb >= TeamModel.maxJoin)
-              negotiate(
-                html = BadRequest(views.html.site.message.teamJoinLimit).fuccess,
-                api = _ => BadRequest(jsonError("You have joined too many teams")).fuccess
-              )
-            else
-              negotiate(
-                html = api.join(id, me, none) flatMap {
-                  case Some(Joined(team))   => Redirect(routes.Team.show(team.id)).flashSuccess.fuccess
-                  case Some(Motivate(team)) => Redirect(routes.Team.requestForm(team.id)).flashSuccess.fuccess
-                  case _                    => notFound(ctx)
-                },
-                api = _ => {
-                  implicit val body = ctx.body
-                  forms.apiRequest
-                    .bindFromRequest()
-                    .fold(
-                      newJsonFormError,
-                      msg =>
-                        api.join(id, me, msg) flatMap {
-                          case Some(Joined(_)) => jsonOkResult.fuccess
-                          case Some(Motivate(_)) =>
-                            BadRequest(
-                              jsonError("This team requires confirmation.")
-                            ).fuccess
-                          case _ => notFoundJson("Team not found")
-                        }
-                    )
-                }
-              )
+          api.team(id) flatMap {
+            _ ?? { team =>
+              api countTeamsOf me flatMap { nb =>
+                if (nb >= TeamModel.maxJoin)
+                  negotiate(
+                    html = BadRequest(views.html.site.message.teamJoinLimit).fuccess,
+                    api = _ => BadRequest(jsonError("You have joined too many teams")).fuccess
+                  )
+                else
+                  negotiate(
+                    html = webJoin(team, me, request = none, password = none),
+                    api = _ => {
+                      implicit val body = ctx.body
+                      forms
+                        .apiRequest(team)
+                        .bindFromRequest()
+                        .fold(
+                          newJsonFormError,
+                          setup =>
+                            api.join(team, me, setup.message, setup.password) flatMap {
+                              case Requesting.Joined => jsonOkResult.fuccess
+                              case Requesting.NeedRequest =>
+                                BadRequest(jsonError("This team requires confirmation.")).fuccess
+                              case Requesting.NeedPassword =>
+                                BadRequest(jsonError("This team requires a password.")).fuccess
+                              case _ => notFoundJson("Team not found")
+                            }
+                        )
+                    }
+                  )
+              }
+            }
           },
       scoped = implicit req =>
-        me => {
-          implicit val lang = reqLang
-          forms.apiRequest
-            .bindFromRequest()
-            .fold(
-              newJsonFormError,
-              msg =>
-                env.oAuth.server.fetchAppAuthor(req) flatMap {
-                  api.joinApi(id, me, _, msg)
-                } flatMap {
-                  case Some(Joined(_)) => jsonOkResult.fuccess
-                  case Some(Motivate(_)) =>
-                    Forbidden(
-                      jsonError("This team requires confirmation, and is not owned by the oAuth app owner.")
-                    ).fuccess
-                  case _ => notFoundJson("Team not found")
-                }
-            )
-        }
+        me =>
+          api.team(id) flatMap {
+            _ ?? { team =>
+              implicit val lang = reqLang
+              forms
+                .apiRequest(team)
+                .bindFromRequest()
+                .fold(
+                  newJsonFormError,
+                  setup =>
+                    env.oAuth.server.fetchAppAuthor(req) flatMap {
+                      api.joinApi(team, me, _, setup.message)
+                    } flatMap {
+                      case Requesting.Joined => jsonOkResult.fuccess
+                      case Requesting.NeedRequest =>
+                        Forbidden(
+                          jsonError(
+                            "This team requires confirmation, and is not owned by the oAuth app owner."
+                          )
+                        ).fuccess
+                    }
+                )
+            }
+          }
     )
 
   def subscribe(teamId: String) = {
@@ -308,7 +314,7 @@ final class Team(
   def requestForm(id: String) =
     Auth { implicit ctx => me =>
       OptionFuOk(api.requestable(id, me)) { team =>
-        fuccess(html.team.request.requestForm(team, forms.request))
+        fuccess(html.team.request.requestForm(team, forms.request(team)))
       }
     }
 
@@ -316,16 +322,26 @@ final class Team(
     AuthBody { implicit ctx => me =>
       OptionFuResult(api.requestable(id, me)) { team =>
         implicit val req = ctx.body
-        forms.request
+        forms
+          .request(team)
           .bindFromRequest()
           .fold(
             err => BadRequest(html.team.request.requestForm(team, err)).fuccess,
             setup =>
-              api.createRequest(team, me, setup.message) inject Redirect(
-                routes.Team.show(team.id)
-              ).flashSuccess
+              if (team.open) webJoin(team, me, request = none, password = setup.password)
+              else
+                setup.message ?? { msg =>
+                  api.createRequest(team, me, msg) inject Redirect(routes.Team.show(team.id)).flashSuccess
+                }
           )
       }
+    }
+
+  private def webJoin(team: TeamModel, me: UserModel, request: Option[String], password: Option[String]) =
+    api.join(team, me, request = request, password = password) flatMap {
+      case Requesting.Joined => Redirect(routes.Team.show(team.id)).flashSuccess.fuccess
+      case Requesting.NeedRequest | Requesting.NeedPassword =>
+        Redirect(routes.Team.requestForm(team.id)).flashSuccess.fuccess
     }
 
   def requestProcess(requestId: String) =
@@ -431,7 +447,7 @@ final class Team(
     Action.async {
       import env.team.jsonView._
       import lila.common.paginator.PaginatorJson._
-      JsonFuOk {
+      JsonOk {
         paginator popularTeams page flatMap { pager =>
           env.user.lightUserApi.preloadMany(pager.currentPageResults.flatMap(_.leaders)) inject pager
         }
@@ -462,7 +478,7 @@ final class Team(
     Action.async {
       import env.team.jsonView._
       import lila.common.paginator.PaginatorJson._
-      JsonFuOk {
+      JsonOk {
         if (text.trim.isEmpty) paginator popularTeams page
         else env.teamSearch(text, page)
       }
@@ -471,7 +487,7 @@ final class Team(
   def apiTeamsOf(username: String) =
     Action.async {
       import env.team.jsonView._
-      JsonFuOk {
+      JsonOk {
         api teamsOf username flatMap { teams =>
           env.user.lightUserApi.preloadMany(teams.flatMap(_.leaders)) inject teams
         }

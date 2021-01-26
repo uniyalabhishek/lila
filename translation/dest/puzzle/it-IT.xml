@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="puzzles">Rompicapi</string>
+  <string name="puzzles">Tattiche</string>
+  <string name="puzzleThemes">Tattiche a tema</string>
   <string name="recommended">Consigliati</string>
   <string name="phases">Fasi</string>
   <string name="motifs">Temi</string>
-  <string name="advanced">Avanzate</string>
-  <string name="lengths">Lunghezze</string>
-  <string name="mates">Compagni</string>
-  <string name="goals">Scopi</string>
+  <string name="advanced">Avanzati</string>
+  <string name="lengths">Per lunghezza</string>
+  <string name="mates">Matti</string>
+  <string name="goals">Per obiettivo</string>
+  <string name="origin" comment="origin&#10;&#10;In this case origin stands for the game the puzzle was found in.">Fonte</string>
   <string name="specialMoves">Mosse speciali</string>
-  <string name="didYouLikeThisPuzzle">Ti è piaciuto questo rompicapo?</string>
-  <string name="voteToLoadNextOne">Vota per caricare il prossimo!</string>
-  <string name="yourPuzzleRatingX">Il voto del tuo rompicapo: %s</string>
+  <string name="didYouLikeThisPuzzle">Ti è piaciuta questa tattica?</string>
+  <string name="voteToLoadNextOne">Vota per caricare la prossima!</string>
+  <string name="yourPuzzleRatingX">Il tuo punteggio nelle tattiche: %s</string>
   <string name="findTheBestMoveForWhite">Trova la mossa migliore per il bianco.</string>
   <string name="findTheBestMoveForBlack">Trova la mossa migliore per il nero.</string>
-  <string name="toGetPersonalizedPuzzles">Per ottenere rompicapi personalizzati:</string>
-  <string name="puzzleId">Rompicapo %s</string>
-  <string name="puzzleOfTheDay">Rompicapo del giorno</string>
-  <string name="clickToSolve">Clicca per risolvere</string>
-  <string name="goodMove">Bella mossa</string>
-  <string name="bestMove">Migliore mossa!</string>
+  <string name="toGetPersonalizedPuzzles">Per ottenere tattiche personalizzate:</string>
+  <string name="puzzleId">Tattica %s</string>
+  <string name="puzzleOfTheDay">Tattica del giorno</string>
+  <string name="clickToSolve">Clicca per vedere la soluzione</string>
+  <string name="goodMove">Buona mossa</string>
+  <string name="bestMove">La mossa migliore!</string>
   <string name="keepGoing">Continua così…</string>
   <string name="puzzleSuccess">Risolto!</string>
-  <string name="puzzleComplete">Rompicapo completato!</string>
+  <string name="puzzleComplete">Tattica risolta!</string>
   <string name="notTheMove">La mossa non è questa!</string>
   <string name="trySomethingElse">Prova qualcos\'altro.</string>
   <string name="ratingX">Punteggio: %s</string>
@@ -32,7 +34,7 @@
     <item quantity="other">Giocato %s volte</item>
   </plurals>
   <string name="fromGameLink">Dalla partita %s</string>
-  <string name="continueTraining">Continua l\'allenamento</string>
+  <string name="continueTraining">Continua ad allenarti</string>
   <string name="difficultyLevel">Livello di difficoltà</string>
   <string name="normal">Normale</string>
   <string name="easier">Facile</string>
@@ -41,5 +43,11 @@
   <string name="hardest">Difficilissimo</string>
   <string name="example">Esempio</string>
   <string name="addAnotherTheme">Aggiungi un altro tema</string>
-  <string name="jumpToNextPuzzleImmediately">Salta immediatamente al prossimo rompicapo</string>
+  <string name="jumpToNextPuzzleImmediately">Passa subito alla tattica successiva</string>
+  <string name="puzzleDashboard">Pagina dei puzzle</string>
+  <string name="improvementAreas">Aree di miglioramento</string>
+  <string name="strengths">Punti di forza</string>
+  <string name="history">Cronologia dei puzzle</string>
+  <string name="solved">risolto</string>
+  <string name="failed">sbagliato</string>
 </resources>

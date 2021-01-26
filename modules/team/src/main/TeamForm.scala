@@ -4,8 +4,8 @@ import play.api.data._
 import play.api.data.Forms._
 import scala.concurrent.duration._
 
-import lila.db.dsl._
 import lila.common.Form.{ clean, numberIn }
+import lila.db.dsl._
 
 final private[team] class TeamForm(
     teamRepo: TeamRepo,
@@ -15,10 +15,18 @@ final private[team] class TeamForm(
     extends lila.hub.CaptchedForm {
 
   private object Fields {
-    val name        = "name"        -> clean(text(minLength = 3, maxLength = 60))
-    val location    = "location"    -> optional(clean(text(minLength = 3, maxLength = 80)))
+    val name     = "name"     -> clean(text(minLength = 3, maxLength = 60))
+    val location = "location" -> optional(clean(text(minLength = 3, maxLength = 80)))
+    val password = "password" -> optional(clean(text(maxLength = 60)))
+    def passwordCheck(team: Team) = "password" -> optional(text).verifying(
+      "team:incorrectTeamPassword",
+      pw => team.password.fold(true)(_ == pw.??(_.trim))
+    )
+    def requestMessage(team: Team) =
+      "message" -> optional(clean(text(minLength = 30, maxLength = 2000)))
+        .verifying("Request message required", msg => msg.isDefined || team.open)
     val description = "description" -> clean(text(minLength = 30, maxLength = 2000))
-    val open        = "open"        -> number
+    val request     = "request"     -> boolean
     val gameId      = "gameId"      -> text
     val move        = "move"        -> text
     val chat        = "chat"        -> numberIn(Team.ChatFor.all)
@@ -28,12 +36,13 @@ final private[team] class TeamForm(
     mapping(
       Fields.name,
       Fields.location,
+      Fields.password,
       Fields.description,
-      Fields.open,
+      Fields.request,
       Fields.gameId,
       Fields.move
     )(TeamSetup.apply)(TeamSetup.unapply)
-      .verifying("This team already exists", d => !teamExists(d).await(2 seconds, "teamExists"))
+      .verifying("team:teamAlreadyExists", d => !teamExists(d).await(2 seconds, "teamExists"))
       .verifying(captchaFailMessage, validateCaptcha _)
   )
 
@@ -41,26 +50,35 @@ final private[team] class TeamForm(
     Form(
       mapping(
         Fields.location,
+        Fields.password,
         Fields.description,
-        Fields.open,
+        Fields.request,
         Fields.chat
       )(TeamEdit.apply)(TeamEdit.unapply)
     ) fill TeamEdit(
       location = team.location,
+      password = team.password,
       description = team.description,
-      open = if (team.open) 1 else 0,
+      request = !team.open,
       chat = team.chat
     )
 
-  val request = Form(
+  def request(team: Team) = Form(
     mapping(
-      "message" -> clean(text(minLength = 30, maxLength = 2000))
+      Fields.requestMessage(team),
+      Fields.passwordCheck(team)
     )(RequestSetup.apply)(RequestSetup.unapply)
   ) fill RequestSetup(
-    message = "Hello, I would like to join the team!"
+    message = "Hello, I would like to join the team!".some,
+    password = None
   )
 
-  val apiRequest = Form(single("message" -> optional(clean(text(minLength = 30, maxLength = 2000)))))
+  def apiRequest(team: Team) = Form(
+    mapping(
+      Fields.requestMessage(team),
+      Fields.passwordCheck(team)
+    )(RequestSetup.apply)(RequestSetup.unapply)
+  )
 
   val processRequest = Form(
     tuple(
@@ -94,13 +112,14 @@ final private[team] class TeamForm(
 private[team] case class TeamSetup(
     name: String,
     location: Option[String],
+    password: Option[String],
     description: String,
-    open: Int,
+    request: Boolean,
     gameId: String,
     move: String
 ) {
 
-  def isOpen = open == 1
+  def isOpen = !request
 
   def trim =
     copy(
@@ -112,12 +131,13 @@ private[team] case class TeamSetup(
 
 private[team] case class TeamEdit(
     location: Option[String],
+    password: Option[String],
     description: String,
-    open: Int,
+    request: Boolean,
     chat: Team.ChatFor
 ) {
 
-  def isOpen = open == 1
+  def isOpen = !request
 
   def trim =
     copy(
@@ -127,5 +147,6 @@ private[team] case class TeamEdit(
 }
 
 private[team] case class RequestSetup(
-    message: String
+    message: Option[String],
+    password: Option[String]
 )

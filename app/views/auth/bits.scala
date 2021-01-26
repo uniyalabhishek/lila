@@ -1,6 +1,7 @@
 package views.html
 package auth
 
+import controllers.routes
 import play.api.data.{ Field, Form }
 
 import lila.api.Context
@@ -8,8 +9,6 @@ import lila.app.templating.Environment._
 import lila.app.ui.ScalatagsTemplate._
 import lila.security.RecaptchaForm
 import lila.user.User
-
-import controllers.routes
 
 object bits {
 
@@ -142,6 +141,22 @@ object bits {
       )
     }
 
+  def tokenLoginConfirmation(user: User, token: String, referrer: Option[String])(implicit ctx: Context) =
+    views.html.base.layout(
+      title = s"Log in as ${user.username}",
+      moreCss = cssTag("form3")
+    ) {
+      main(cls := "page-small box box-pad")(
+        h1("Log in as ", userLink(user)),
+        postForm(action := routes.Auth.loginWithTokenPost(token, referrer))(
+          form3.actions(
+            a(href := routes.Lobby.home())(trans.cancel()),
+            submitButton(cls := "button")(s"${user.username} is my Lichess username, log me in")
+          )
+        )
+      )
+    }
+
   def checkYourEmailBanner(userEmail: lila.security.EmailConfirm.UserEmail) =
     frag(
       styleTag("""
@@ -183,6 +198,18 @@ body { margin-top: 45px; }
         h1(cls := "text", dataIcon := "2")("Ooops"),
         p("Sorry, you can't signup to Lichess through Tor!"),
         p("You can play, train and use almost all Lichess features as an anonymous user.")
+      )
+    }
+
+  def logout()(implicit ctx: Context) =
+    views.html.base.layout(
+      title = trans.logOut.txt()
+    ) {
+      main(cls := "page-small box box-pad")(
+        h1(trans.logOut()),
+        form(action := routes.Auth.logout(), method := "post")(
+          button(cls := "button button-red", tpe := "submit")(trans.logOut.txt())
+        )
       )
     }
 }

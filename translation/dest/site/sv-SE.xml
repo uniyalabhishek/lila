@@ -9,6 +9,7 @@
   <string name="yourTurn">Din tur</string>
   <string name="aiNameLevelAiLevel">%1$s nivå %2$s</string>
   <string name="level">Nivå</string>
+  <string name="strength">Styrka</string>
   <string name="toggleTheChat">Dölj/visa chattrutan</string>
   <string name="toggleSound">Ljud av/på</string>
   <string name="chat">Chatta</string>
@@ -382,7 +383,6 @@
   <string name="more">Visa mer</string>
   <string name="memberSince">Medlem sedan</string>
   <string name="lastSeenActive">Aktiv %s</string>
-  <string name="challengeToPlay">Utmana till ett parti</string>
   <string name="player">Spelare</string>
   <string name="list">Lista</string>
   <string name="graph">Graf</string>
@@ -510,6 +510,7 @@
   <string name="clockInitialTime">Starttid</string>
   <string name="clockIncrement">Tidstillägg</string>
   <string name="privacy">Sekretess</string>
+  <string name="privacyPolicy">Integritetspolicy</string>
   <string name="letOtherPlayersFollowYou">Låt andra spelare följa dig</string>
   <string name="letOtherPlayersChallengeYou">Låt andra spelare utmana dig</string>
   <string name="letOtherPlayersInviteYouToStudy">Låt andra spelare bjuda in dig till studier</string>
@@ -655,6 +656,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Om du inte ser e-postmeddelandet, kontrollera andra ställen där det kan vara, som din skräppost, spam, sociala eller andra mappar.</string>
   <string name="weHaveSentYouAnEmailTo">Vi har skickat ett e-postmeddelande till %s. Tryck på länken i e-posten för att återställa ditt lösenord.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Genom att registrera samtycker du till att vara bunden av våra %s.</string>
+  <string name="readAboutOur">Läs om vår %s.</string>
   <string name="networkLagBetweenYouAndLichess">Nätverksfördröjning mellan dig och lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Tid att bearbeta ett drag på lichess server</string>
   <string name="downloadAnnotated">Hämta med noter</string>
@@ -733,7 +735,6 @@
   <string name="error.unknown">Fel</string>
   <string name="custom">Anpassad</string>
   <string name="notifications">Aviseringar</string>
-  <string name="challenges">Utmaningar</string>
   <string name="perfRatingX">Rating: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s sekund kvar för att spela första draget</item>
@@ -774,18 +775,12 @@
   <string name="reviewBlackMistakes">Granska svarts misstag</string>
   <string name="advantage">Fördel</string>
   <plurals name="nbSeconds">
-    <item quantity="one">%s sekunder</item>
+    <item quantity="one">%s sekund</item>
     <item quantity="other">%s sekunder</item>
   </plurals>
   <string name="opening">Öppning</string>
   <string name="middlegame">Mittparti</string>
   <string name="endgame">Slutspel</string>
-  <string name="registerToSendChallenges">Vänligen registrera ett konto för att skicka utmaningar.</string>
-  <string name="youCannotChallengeX">Du kan inte utmana %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s accepterar inte utmaningar.</string>
-  <string name="yourXRatingIsTooFarFromY">Din %1$srating är för långt från %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Kan inte utmana på grund av provisorisk %srating.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s accepterar utmaningar endast från vänner.</string>
   <string name="conditionalPremoves">Villkorade förhandsdrag</string>
   <string name="addCurrentVariation">Lägg till aktuell variant</string>
   <string name="playVariationToCreateConditionalPremoves">Spela en variant för att skapa villkorade förhandsdrag</string>

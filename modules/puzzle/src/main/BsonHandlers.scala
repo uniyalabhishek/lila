@@ -65,17 +65,19 @@ private[puzzle] object BsonHandlers {
     def reads(r: BSON.Reader) = PuzzleRound(
       id = r.get[PuzzleRound.Id](id),
       win = r.bool(win),
+      fixedAt = r.dateO(fixedAt),
       date = r.date(date),
       vote = r.intO(vote),
       themes = r.getsD[PuzzleRound.Theme](themes)
     )
     def writes(w: BSON.Writer, r: PuzzleRound) =
       $doc(
-        id     -> r.id,
-        win    -> r.win,
-        date   -> r.date,
-        vote   -> r.vote,
-        themes -> w.listO(r.themes)
+        id      -> r.id,
+        win     -> r.win,
+        fixedAt -> r.fixedAt,
+        date    -> r.date,
+        vote    -> r.vote,
+        themes  -> w.listO(r.themes)
       )
   }
 

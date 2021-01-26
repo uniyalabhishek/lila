@@ -21,13 +21,10 @@ final class JsonView(
     moretimer: Moretimer,
     divider: lila.game.Divider,
     evalCache: lila.evalCache.EvalCacheApi,
-    isOfferingRematch: Pov => Boolean,
-    moretime: MoretimeDuration
+    isOfferingRematch: Pov => Boolean
 )(implicit ec: scala.concurrent.ExecutionContext) {
 
   import JsonView._
-
-  private val moretimeSeconds = moretime.value.toSeconds.toInt
 
   private def checkCount(game: Game, color: Color) =
     (game.variant == chess.variant.ThreeCheck) option game.history.checkCount(color)
@@ -167,7 +164,8 @@ final class JsonView(
             "player" -> {
               commonWatcherJson(game, player, playerUser, withFlags) ++ Json.obj(
                 "version"   -> socket.version.value,
-                "spectator" -> true
+                "spectator" -> true,
+                "id"        -> me.flatMap(game.player).map(_.id)
               )
             }.add("onGame" -> (player.isAi || socket.onGame(player.color))),
             "opponent" -> commonWatcherJson(game, opponent, opponentUser, withFlags).add(
@@ -243,8 +241,7 @@ final class JsonView(
           .obj(
             "animationDuration" -> animationMillis(pov, pref),
             "coords"            -> pref.coords,
-            "moveEvent"         -> pref.moveEvent,
-            "resizeHandle"      -> pref.resizeHandle
+            "moveEvent"         -> pref.moveEvent
           )
           .add("rookCastle" -> (pref.rookCastle == Pref.RookCastle.YES))
           .add("is3d" -> pref.is3d)
@@ -263,7 +260,7 @@ final class JsonView(
     }
 
   private def clockJson(clock: Clock): JsObject =
-    clockWriter.writes(clock) + ("moretime" -> JsNumber(moretimeSeconds))
+    clockWriter.writes(clock) + ("moretime" -> JsNumber(actorApi.round.Moretime.defaultDuration.toSeconds))
 
   private def possibleMoves(pov: Pov, apiVersion: ApiVersion): Option[JsValue] =
     (pov.game playableBy pov.player) option

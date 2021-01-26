@@ -37,6 +37,8 @@ object Puzzle {
 
   case class Id(value: String) extends AnyVal with StringValue
 
+  def toId(id: String) = id.size == idSize option Id(id)
+
   /* The mobile app requires numerical IDs.
    * We convert string ids from and to Longs using base 62
    */
@@ -51,7 +53,7 @@ object Puzzle {
         l + charToInt(char) * pow
       }
 
-    def apply(l: Long): Option[Id] = {
+    def apply(l: Long): Option[Id] = (l > 130_000) ?? {
       val str = powers.reverse
         .foldLeft(("", l)) { case ((id, rest), pow) =>
           val frac = rest / pow

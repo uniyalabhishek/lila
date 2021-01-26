@@ -26,7 +26,8 @@ final class User(
     env: Env,
     roundC: => Round,
     gameC: => Game,
-    modC: => Mod
+    modC: => Mod,
+    puzzleC: => Puzzle
 ) extends LilaController(env) {
 
   private def relationApi    = env.relation.api

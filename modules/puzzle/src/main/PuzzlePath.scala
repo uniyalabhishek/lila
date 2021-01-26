@@ -42,12 +42,11 @@ final private class PuzzlePathApi(
       .path {
         _.aggregateOne() { framework =>
           import framework._
-          val rating          = user.perfs.puzzle.glicko.intRating + difficulty.ratingDelta
-          val ratingDeltaBase = 100 + math.abs(1500 - rating) / 4
-          val ratingDelta     = ratingDeltaBase * compromise
+          val rating     = user.perfs.puzzle.glicko.intRating + difficulty.ratingDelta
+          val ratingFlex = (100 + math.abs(1500 - rating) / 4) * compromise.atMost(4)
           Match(
-            select(theme, actualTier, (rating - ratingDelta) to (rating + ratingDelta)) ++
-              (previousPaths.nonEmpty ?? $doc("_id" $nin previousPaths))
+            select(theme, actualTier, (rating - ratingFlex) to (rating + ratingFlex)) ++
+              ((compromise != 5 && previousPaths.nonEmpty) ?? $doc("_id" $nin previousPaths))
           ) -> List(
             Sample(1),
             Project($id(true))
@@ -60,7 +59,7 @@ final private class PuzzlePathApi(
           nextFor(user, theme, PuzzleTier.Good, difficulty, previousPaths)
         case _ if actualTier == PuzzleTier.Good && compromise == 2 =>
           nextFor(user, theme, PuzzleTier.All, difficulty, previousPaths, compromise = 1)
-        case _ if compromise < 4 =>
+        case _ if compromise < 5 =>
           nextFor(user, theme, actualTier, difficulty, previousPaths, compromise + 1)
         case _ => fuccess(none)
       }

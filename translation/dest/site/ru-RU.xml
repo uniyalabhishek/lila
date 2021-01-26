@@ -9,6 +9,7 @@
   <string name="yourTurn">Ваш ход</string>
   <string name="aiNameLevelAiLevel">%1$s уровня %2$s</string>
   <string name="level">Уровень</string>
+  <string name="strength">Сложность</string>
   <string name="toggleTheChat">Показывать окно чата</string>
   <string name="toggleSound">Вкл/выкл звук</string>
   <string name="chat">Отправить сообщение</string>
@@ -436,7 +437,6 @@
   <string name="more">Ещё</string>
   <string name="memberSince">Дата регистрации</string>
   <string name="lastSeenActive">Был онлайн %s</string>
-  <string name="challengeToPlay">Вызвать на игру</string>
   <string name="player">Игрок</string>
   <string name="list">Список</string>
   <string name="graph">Диаграмма</string>
@@ -568,6 +568,7 @@
   <string name="clockInitialTime">Начальное время на часах</string>
   <string name="clockIncrement">Добавка времени</string>
   <string name="privacy">Конфиденциальность</string>
+  <string name="privacyPolicy">Политика конфиденциальности</string>
   <string name="letOtherPlayersFollowYou">Разрешить другим игрокам подписываться на вас</string>
   <string name="letOtherPlayersChallengeYou">Разрешить другим игрокам вызывать вас на игру</string>
   <string name="letOtherPlayersInviteYouToStudy">Разрешить другим игрокам приглашать вас в студию</string>
@@ -721,6 +722,7 @@
   <string name="ifYouDoNotSeeTheEmailCheckOtherPlaces">Если письма нет, проверьте папку для спама и другие места, куда оно могло попасть.</string>
   <string name="weHaveSentYouAnEmailTo">Мы отправили письмо по адресу %s. Нажмите на ссылку в нём для сброса пароля.</string>
   <string name="byRegisteringYouAgreeToBeBoundByOur">Регистрируясь, вы берёте на себя обязанность соблюдать наше %s</string>
+  <string name="readAboutOur">Почитайте подробней: %s.</string>
   <string name="networkLagBetweenYouAndLichess">Задержки передачи данных между вами и серверами lichess</string>
   <string name="timeToProcessAMoveOnLichessServer">Время обработки хода на сервере</string>
   <string name="downloadAnnotated">Скачать с аннотациями</string>
@@ -801,7 +803,6 @@
   <string name="error.unknown">Ошибка</string>
   <string name="custom">Своя игра</string>
   <string name="notifications">Уведомления</string>
-  <string name="challenges">Вызовы</string>
   <string name="perfRatingX">Рейтинг: %s</string>
   <plurals name="nbSecondsToPlayTheFirstMove">
     <item quantity="one">%s секунда на первый ход</item>
@@ -852,12 +853,6 @@
   <string name="opening">Дебют</string>
   <string name="middlegame">Миттельшпиль</string>
   <string name="endgame">Эндшпиль</string>
-  <string name="registerToSendChallenges">Зарегистрируйтесь, чтобы вызывать соперников на игру.</string>
-  <string name="youCannotChallengeX">Вы не можете вызвать на игру %s.</string>
-  <string name="xDoesNotAcceptChallenges">%s не принимает вызовы.</string>
-  <string name="yourXRatingIsTooFarFromY">Ваш рейтинг в %1$s слишком отличается от рейтинга %2$s.</string>
-  <string name="cannotChallengeDueToProvisionalXRating">Невозможно из-за недостоверности рейтинга %s.</string>
-  <string name="xOnlyAcceptsChallengesFromFriends">%s принимает вызовы только от друзей.</string>
   <string name="conditionalPremoves">Условные предходы</string>
   <string name="addCurrentVariation">Добавить текущий вариант</string>
   <string name="playVariationToCreateConditionalPremoves">Выполните ходы на доске, чтобы задать условные предходы</string>

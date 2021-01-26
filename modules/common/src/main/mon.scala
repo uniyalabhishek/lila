@@ -428,7 +428,11 @@ object mon {
             Map("theme" -> theme, "difficulty" -> difficulty)
           )
         def ratingDev(theme: String) = histogram("puzzle.selector.user.ratingDev").withTag("theme", theme)
-        def batch(nb: Int)           = timer("puzzle.selector.user.batch").withTag("nb", nb)
+        def tier(t: String, theme: String, difficulty: String) =
+          counter("puzzle.selector.user.tier").withTags(
+            Map("tier" -> t, "theme" -> theme, "difficulty" -> difficulty)
+          )
+        def batch(nb: Int) = timer("puzzle.selector.user.batch").withTag("nb", nb)
       }
       object anon {
         def time(theme: String) = timer("puzzle.selector.anon.puzzle").withTag("theme", theme)
@@ -447,8 +451,8 @@ object mon {
             "theme"         -> theme,
             "tier"          -> tier,
             "difficulty"    -> difficulty,
-            "previousPaths" -> previousPaths,
-            "compromise"    -> compromise
+            "previousPaths" -> previousPaths.toString,
+            "compromise"    -> compromise.toString
           )
         )
     }

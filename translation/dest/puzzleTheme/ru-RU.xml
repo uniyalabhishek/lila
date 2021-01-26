@@ -4,24 +4,30 @@
   <string name="advancedPawnDescription">Пешка, готовая к превращению, имеет важное тактическое значение.</string>
   <string name="advantage">Преимущество</string>
   <string name="advantageDescription">Используйте свой шанс получить решающее преимущество. (от 200 до 600 сантипешек)</string>
+  <string name="anastasiaMate">Мат Анастасии</string>
+  <string name="anastasiaMateDescription">Конь и ладья (или ферзь) матуют короля противника между краем доски и другой фигурой противника.</string>
+  <string name="arabianMate" comment="arabianMate&#10;&#10;A knight and a rook team up to trap the opposing king on a corner of the board.">Арабский мат</string>
+  <string name="arabianMateDescription" comment="arabianMateDescription&#10;&#10;See https://en.wikipedia.org/wiki/Checkmate_pattern#Arabian_mate">Конь и ладья матуют вражеского короля в углу доски.</string>
   <string name="attackingF2F7">Атака f2 или f7</string>
   <string name="attackingF2F7Description">Атака, направленная на пешки f2 или f7, например, в дебюте жареной печени.</string>
   <string name="attraction">Завлечение</string>
-  <string name="attractionDescription">Размен или жертва фигуры, заставляющие противника занять поле, на которое будет нацелен последующий тактический удар.</string>
+  <string name="attractionDescription">Размен или жертва, вынуждающая или подталкивающая фигуру противника занять поле, на которое будет нацелен последующий тактический удар.</string>
   <string name="backRankMate">Мат на последней горизонтали</string>
   <string name="backRankMateDescription">Матование короля на его горизонтали, когда он заблокирован своими же фигурами.</string>
   <string name="bishopEndgame">Слоновый эндшпиль</string>
-  <string name="bishopEndgameDescription">Эндшпиль только со слонами и пешками.</string>
+  <string name="bishopEndgameDescription">Эндшпиль, где присутствуют лишь слоны и пешки.</string>
+  <string name="bodenMate" comment="bodenMate&#10;&#10;Two attacking bishops on criss-crossing diagonals deliver mate to a king obstructed by friendly pieces.">Мат Бодена</string>
+  <string name="bodenMateDescription" comment="bodenMateDescription&#10;&#10;see https://en.wikipedia.org/wiki/Boden%27s_Mate&#10;">Два слона с пересекающихся диагоналей ставят мат вражескому королю, окружённому собственными фигурами.</string>
   <string name="castling">Рокировка</string>
   <string name="castlingDescription">Поместите короля в надёжное место и выведите в бой ладью.</string>
   <string name="capturingDefender">Уничтожение защитника</string>
-  <string name="capturingDefenderDescription">Взятие или размен фигуры, защищающей другую фигуру, с последующим взятием фигуры, оставшейся без защиты.</string>
+  <string name="capturingDefenderDescription">Избавьтесь от фигуры, защищающей другую фигуру, с последующим взятием фигуры, оставшейся без защиты.</string>
   <string name="crushing">Разгром</string>
-  <string name="crushingDescription">Использование зевка противника и получение сокрушительного преимущества (600 и более сантипешек).</string>
+  <string name="crushingDescription">Используйте зевок противника для получения сокрушительного преимущества. (600 и более сантипешек)</string>
   <string name="equality">Уравнение</string>
-  <string name="equalityDescription">Отыгрыш в безнадёжной позиции. Сведение партии на ничью или получение позиционного равенства (менее 200 сантипешек).</string>
+  <string name="equalityDescription">Отыграйтесь из проигранной позиции: сведите партию вничью или получите позиционное равенство. (менее 200 сантипешек)</string>
   <string name="kingsideAttack">Атака на королевском фланге</string>
-  <string name="kingsideAttackDescription">Атака рокированного в короткую сторону короля.</string>
+  <string name="kingsideAttackDescription">Атака на рокированного в короткую сторону короля противника.</string>
   <string name="clearance">Освобождение линии или поля</string>
   <string name="clearanceDescription">Ход, обычно с темпом, освобождающий поле, линию или диагональ с целью реализации тактической идеи.</string>
   <string name="defensiveMove">Защитный ход</string>
@@ -41,6 +47,8 @@
   <string name="forkDescription">Ход, при котором под удар попадают две фигуры противника.</string>
   <string name="hangingPiece">Висячая фигура</string>
   <string name="hangingPieceDescription">Незащищённая или недостаточно защищённая фигура либо берётся сразу, либо становится объектом для атаки.</string>
+  <string name="hookMate">Хук-мат</string>
+  <string name="hookMateDescription">Мат ладьёй и конём, защищённым пешкой, при том, что одна из пешек противника занимает единственное доступное поле для отхода его короля.</string>
   <string name="interference">Перекрытие</string>
   <string name="interferenceDescription">Ход, перекрывающий линию взаимодействия дальнобойных фигур противника, в результате которого одна или обе фигуры становятся беззащитными. Например, конь встаёт на линию между двумя ладьями.</string>
   <string name="intermezzo">Промежуточный ход</string>
@@ -49,6 +57,10 @@
   <string name="knightEndgameDescription">Эндшпиль, в котором на доске остались только кони и пешки.</string>
   <string name="long">Многоходовая задача</string>
   <string name="longDescription">Три хода до победы.</string>
+  <string name="master">Партии мастеров</string>
+  <string name="masterDescription">Задачи из партий титулованных шахматистов.</string>
+  <string name="masterVsMaster">Партии мастеров</string>
+  <string name="masterVsMasterDescription">Задачи из партий, сыгранных титулованными игроками.</string>
   <string name="mate">Мат</string>
   <string name="mateDescription">Выиграйте игру красиво.</string>
   <string name="mateIn1">Мат в 1 ход</string>
@@ -67,8 +79,6 @@
   <string name="oneMoveDescription">Задача, где нужно сделать только один выигрывающий ход.</string>
   <string name="opening">Дебют</string>
   <string name="openingDescription">Тактические приёмы в первой стадии игры.</string>
-  <string name="overloading">Перегрузка</string>
-  <string name="overloadingDescription">Ситуация, в которой фигура выполняет несколько задач, например, защищает две фигуры. Размен одной из фигур оставит вторую фигуру без защиты. Похоже на отвлечение.</string>
   <string name="pawnEndgame">Пешечное окончание</string>
   <string name="pawnEndgameDescription">Эндшпиль только с пешками</string>
   <string name="pin">Связка</string>
@@ -93,6 +103,8 @@
   <string name="skewerDescription">Разновидность связки, но в этом случае наоборот, более ценная фигура оказывается на линии атаки перед менее ценной или равноценной фигурой.</string>
   <string name="smotheredMate">Спёртый мат</string>
   <string name="smotheredMateDescription">Мат конём королю, который не может уйти от мата, потому что окружён (спёрт) своими же собственными фигурами.</string>
+  <string name="superGM">Партии супергроссмейстеров</string>
+  <string name="superGMDescription">Задачи из партий, сыгранных лучшими шахматистами в мире.</string>
   <string name="trappedPiece">Ловля фигуры</string>
   <string name="trappedPieceDescription">Фигура не может уйти от нападения, потому что не имеет свободных полей для отхода, или эти поля тоже находятся под нападением.</string>
   <string name="underPromotion">Превращение в слабую фигуру</string>
@@ -103,6 +115,6 @@
   <string name="xRayAttackDescription">Ситуация, когда на линии нападения или защиты дальнобойной фигуры стоит фигура противника.</string>
   <string name="zugzwang">Цугцванг</string>
   <string name="zugzwangDescription">Противник вынужден сделать один из немногих возможных ходов, но любой ход ведёт к ухудшению его положения.</string>
-  <string name="healthyMix">Здоровая смесь</string>
-  <string name="healthyMixDescription">Всего понемногу. Вы не знаете, чего ожидать, так что будьте готовы ко всему! Как и в любой игре.</string>
+  <string name="healthyMix">Сборная солянка</string>
+  <string name="healthyMixDescription">Всего понемногу. Вы не знаете, чего ожидать, так что будьте готовы ко всему! Прямо как в партиях.</string>
 </resources>

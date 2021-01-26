@@ -73,10 +73,10 @@ final class ChallengeApi(
       case _                    => fuccess(socketReload(id))
     }
 
-  def decline(c: Challenge) =
-    repo.decline(c) >>- {
+  def decline(c: Challenge, reason: Challenge.DeclineReason) =
+    repo.decline(c, reason) >>- {
       uncacheAndNotify(c)
-      Bus.publish(Event.Decline(c), "challenge")
+      Bus.publish(Event.Decline(c declineWith reason), "challenge")
     }
 
   private val acceptQueue = new lila.hub.DuctSequencer(maxSize = 64, timeout = 5 seconds, "challengeAccept")
@@ -131,7 +131,7 @@ final class ChallengeApi(
         .dmap(_ exists identity)
 
   private[challenge] def sweep: Funit =
-    repo.realTimeUnseenSince(DateTime.now minusSeconds 10, max = 50).flatMap { cs =>
+    repo.realTimeUnseenSince(DateTime.now minusSeconds 20, max = 50).flatMap { cs =>
       lila.common.Future.applySequentially(cs)(offline).void
     } >>
       repo.expired(50).flatMap { cs =>
@@ -149,7 +149,7 @@ final class ChallengeApi(
   }
 
   private def socketReload(id: Challenge.ID): Unit =
-    socket foreach (_ reload id)
+    socket.foreach(_ reload id)
 
   private def notify(userId: User.ID): Funit =
     for {
